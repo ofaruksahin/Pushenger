@@ -117,16 +117,10 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="CompanyAlreadyExists" xml:space="preserve">
-    <value>Böyle bir firma zaten mevcut.</value>
+  <data name="Error" xml:space="preserve">
+    <value>İşleminiz tamamlanırken bir hataya rastlandı.</value>
   </data>
-  <data name="CompanyNotCreated" xml:space="preserve">
-    <value>Firma oluşturulamadı.</value>
-  </data>
-  <data name="UserAlreadyExists" xml:space="preserve">
-    <value>Böyle bir kullanıcı zaten mevcut.</value>
-  </data>
-  <data name="UserNotCreated" xml:space="preserve">
-    <value>Kullanıcı oluşturulamadı.</value>
+  <data name="Successful" xml:space="preserve">
+    <value>İşleminiz başarıyla tamamlandı.</value>
   </data>
 </root>

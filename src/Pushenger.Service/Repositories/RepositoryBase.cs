@@ -7,17 +7,17 @@ namespace Pushenger.Service.Repositories
 {
     public class RepositoryBase
     {
-        private IDbTransaction _transaction { get; set; }
+        private IDbTransaction transaction { get; set; }
 
-        private IDbContext _instance { get; set; }
+        private IDbContext instance { get; set; }
 
-        private ConnectionMultiplexer _cacheInstance { get; set; }
+        private ConnectionMultiplexer cacheInstance { get; set; }
 
-        protected IDbContext _connection
+        protected IDbContext connection
         {
             get
             {
-                return _instance ?? (_instance = new DbContext(_transaction));
+                return instance ?? (instance = new DbContext(transaction));
             }
         }
 
@@ -25,18 +25,18 @@ namespace Pushenger.Service.Repositories
         {
             get
             {
-                if (_cacheInstance == null)
+                if (cacheInstance == null)
                 {
                     Connections connections = Connections.Instance;
                     //_cacheInstance = ConnectionMultiplexer.Connect(connections.RedisConnectionString);
                 }
-                return _cacheInstance;
+                return cacheInstance;
             }
         }
 
         public RepositoryBase(IDbTransaction transaction)
         {
-            _transaction = transaction;
+            this.transaction = transaction;
         }
     }
 }

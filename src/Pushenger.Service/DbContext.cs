@@ -1,6 +1,7 @@
 ﻿using Dapper;
 using Dapper.Contrib.Extensions;
 using Pushenger.Core.Entities;
+using Pushenger.Core.Enums;
 using Pushenger.Core.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -70,6 +71,7 @@ namespace Pushenger.Service
         {
             try
             {
+                item.ModifiedDate = DateTime.Now;
                 _connection.Update(item, _transaction);
             }
             catch (Exception ex)
@@ -83,6 +85,8 @@ namespace Pushenger.Service
         {
             try
             {
+                item.ModifiedDate = DateTime.Now;
+                item.Status = enumRecordStatus.InActive;
                 return _connection.Update(item, _transaction);
             }
             catch (Exception ex)

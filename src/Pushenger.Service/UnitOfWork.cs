@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using Pushenger.Core.Interfaces;
+using Pushenger.Core.Utilities;
+using Pushenger.Service.Repositories;
 using System;
 using System.Data;
 
@@ -7,18 +9,22 @@ namespace Pushenger.Service
 {
     public class UnitOfWork : IUnitOfWork
     {
-        IDbTransaction _transaction;
-        IDbConnection _connection;
+        IDbTransaction transaction;
+        IDbConnection connection;
 
-        bool _disposed;
+        bool disposed;
+
+        ICompanyRepository companyRepository;
+        IUserRepository userRepository;
 
         public UnitOfWork()
         {
             try
             {
-                _connection = new MySqlConnection("");
-                _connection.Open();
-                _transaction = _connection.BeginTransaction();
+                Connections connectionInfo = Connections.Instance;
+                connection = new MySqlConnection(connectionInfo.MysqlConnectionString);
+                connection.Open();
+                transaction = connection.BeginTransaction();
             }
             catch (MySqlException ex)
             {
@@ -26,24 +32,39 @@ namespace Pushenger.Service
             }
         }
       
+        public ICompanyRepository CompanyRepository
+        {
+            get
+            {
+                return companyRepository ?? (companyRepository = new CompanyRepository(transaction));
+            }
+        }
+
+        public IUserRepository UserRepository
+        {
+            get
+            {
+                return userRepository ?? (userRepository = new UserRepository(transaction));
+            }
+        }
 
         public bool Commit()
         {
             bool rtn = false;
             try
             {
-                _transaction.Commit();
+                transaction.Commit();
                 rtn = true;
             }
             catch (Exception)
             {
-                _transaction.Rollback();
+                transaction.Rollback();
                 throw;
             }
             finally
             {
-                _transaction.Dispose();
-                _transaction = _connection.BeginTransaction();
+                transaction.Dispose();
+                transaction = connection.BeginTransaction();
                 resetRepositories();
             }
             return rtn;
@@ -60,7 +81,7 @@ namespace Pushenger.Service
             bool rtn = false;
             try
             {
-                _transaction?.Rollback();
+                transaction?.Rollback();
                 rtn = true;
             }
             catch (Exception)
@@ -69,8 +90,8 @@ namespace Pushenger.Service
             }
             finally
             {
-                _transaction?.Dispose();
-                _transaction = _connection.BeginTransaction();
+                transaction?.Dispose();
+                transaction = connection.BeginTransaction();
                 resetRepositories();
             }
             return rtn;
@@ -78,27 +99,29 @@ namespace Pushenger.Service
 
         private void resetRepositories()
         {
+            companyRepository = null;
+            userRepository = null;
         }
 
         private void dispose(bool disposing)
         {
-            if (!_disposed)
+            if (!disposed)
             {
                 if (disposing)
                 {
-                    if (_transaction != null)
+                    if (transaction != null)
                     {
-                        _transaction.Dispose();
-                        _transaction = null;
+                        transaction.Dispose();
+                        transaction = null;
                     }
 
-                    if (_connection != null)
+                    if (connection != null)
                     {
-                        _connection.Dispose();
-                        _connection = null;
+                        connection.Dispose();
+                        connection = null;
                     }
                 }
-                _disposed = true;
+                disposed = true;
             }
         }
 

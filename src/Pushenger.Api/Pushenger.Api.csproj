@@ -4,8 +4,11 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile>C:\Projects\Pushenger\src\Pushenger.Api\Pushenger.Api.xml</DocumentationFile>
+  </PropertyGroup>
+
   <ItemGroup>
-    <Folder Include="Dto\" />
     <Folder Include="Filters\" />
     <Folder Include="Hubs\" />
   </ItemGroup>

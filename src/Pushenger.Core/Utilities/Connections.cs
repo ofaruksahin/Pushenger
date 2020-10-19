@@ -17,12 +17,14 @@ namespace Pushenger.Core.Utilities
             }
         }
 
-        IConfiguration _configuration;
+        IConfiguration configuration;
 
         private Connections()
         {
             EnvironmentManager environmentManager = EnvironmentManager.Instance;
-            _configuration = environmentManager.GetConfiguration();
+            configuration = environmentManager.GetConfiguration();
         }
+
+        public string MysqlConnectionString => (string)configuration.GetValue(typeof(string), "mysql_connection");
     }
 }

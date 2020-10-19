@@ -5,8 +5,16 @@ using System.Globalization;
 
 namespace Pushenger.Api.Utilities
 {
+    /// <summary>
+    /// Localization entegrasyonu
+    /// </summary>
     public static class CultureUtility
     {        
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="services"></param>
+        /// <returns></returns>
         public static IServiceCollection AddCulture(this IServiceCollection services)
         {
             services.AddLocalization(options =>
@@ -15,6 +23,12 @@ namespace Pushenger.Api.Utilities
             });
             return services;
         }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <param name="app"></param>
+        /// <returns></returns>
         public static IApplicationBuilder UseCulture(this IApplicationBuilder app)
         {
             var supportedCultures = new[]

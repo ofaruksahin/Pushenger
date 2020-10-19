@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Pushenger.Api</name>
+    </assembly>
+    <members>
+        <member name="T:Pushenger.Api.Controllers.CompanyController">
+            <summary>
+            Firma İşlemlerini Yapar.
+            </summary>
+        </member>
+    </members>
+</doc>

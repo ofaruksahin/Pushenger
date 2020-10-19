@@ -8,30 +8,54 @@ using Pushenger.Api.Utilities;
 
 namespace Pushenger.Api
 {
+    /// <summary>
+    /// Startup Class
+    /// </summary>
     public class Startup
     {
+        /// <summary>
+        /// Constructor
+        /// </summary>
+        /// <param name="configuration"></param>
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
+        /// <summary>
+        /// Configuration Object
+        /// </summary>
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
+        /// <summary>
+        /// Service Configuration
+        /// </summary>
+        /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            var mvcBuilder = services.AddControllers().SetCompatibilityVersion(CompatibilityVersion.Latest);
-            mvcBuilder.AddFluent();
+            var mvcBuilder = services.AddControllers(options=> {
+                options.EnableEndpointRouting = false;
+            }).SetCompatibilityVersion(CompatibilityVersion.Latest);
+
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-            });
+            });            
 
+            mvcBuilder.AddFluent();
+            services.AddCors();
 
+            services.AddCulture();
+            services.AddInjection();
             services.AddMapper();
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
+
+        /// <summary>
+        /// Configure Application
+        /// </summary>
+        /// <param name="app"></param>
+        /// <param name="env"></param>
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             app.UseCors(x => x
@@ -39,9 +63,9 @@ namespace Pushenger.Api
               .AllowAnyMethod()
              .AllowAnyHeader());
 
+            app.UseCulture();
             app.UseMvc();
 
-            app.UseCulture();
         }
     }
 }
