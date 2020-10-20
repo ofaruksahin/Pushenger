@@ -18,5 +18,11 @@ namespace Pushenger.Core.Interfaces
         /// <param name="user"></param>
         /// <returns></returns>
         IResult Insert(Company company,User user);
+        /// <summary>
+        /// İlgili Id'ye Göre Aktif Firma Bilgisini Getirir.
+        /// </summary>
+        /// <param name="Id"></param>
+        /// <returns></returns>
+        IDataResult<Company> FindById(int Id);
     } 
 }

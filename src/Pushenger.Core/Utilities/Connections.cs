@@ -26,5 +26,6 @@ namespace Pushenger.Core.Utilities
         }
 
         public string MysqlConnectionString => (string)configuration.GetValue(typeof(string), "mysql_connection");
+        public string RedisConnectionString => (string)configuration.GetValue(typeof(string), "redis_connection");
     }
 }

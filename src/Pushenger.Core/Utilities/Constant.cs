@@ -11,6 +11,13 @@
             public static string UserAlreadyExists => "UserAlreadyExists";
             public static string CompanyNotCreated => "CompanyNotCreated";
             public static string UserNotCreated => "UserNotCreated";
-        }       
+            public static string CompanyNotFound => "CompanyNotFound";
+        }      
+        
+        public static class UserMessages
+        {
+            public static string UserNotFound => "UserNotFound";
+            public static string LoginError => "LoginError";
+        }
     }
 }

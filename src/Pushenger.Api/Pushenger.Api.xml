@@ -4,9 +4,286 @@
         <name>Pushenger.Api</name>
     </assembly>
     <members>
+        <member name="T:Pushenger.Api.Controllers.BaseController">
+            <summary>
+            Paylaşım Katmanı
+            </summary>
+        </member>
+        <member name="F:Pushenger.Api.Controllers.BaseController.unitOfWork">
+            <summary>
+            Unit of Work classı
+            </summary>
+        </member>
+        <member name="F:Pushenger.Api.Controllers.BaseController.mapper">
+            <summary>
+            AutoMapper classı
+            </summary>
+        </member>
+        <member name="F:Pushenger.Api.Controllers.BaseController.baseLocalizer">
+            <summary>
+            Base mesajlar için localizaiton servisi
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.BaseController.#ctor(Pushenger.Core.Interfaces.IUnitOfWork,AutoMapper.IMapper,Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.BaseResource})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="_unitOfWork"></param>
+            <param name="_mapper"></param>
+            <param name="_baseLocalizer"></param>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.BaseController.Ok``1(``0,System.String)">
+            <summary>
+            İşlem başarılıysa clientlara bu şekilde dönüş sağlanır.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.BaseController.NotFound``1(``0,System.String)">
+            <summary>
+            İşlem başarısızsa clientlara bu şekilde dönüş sağlanır.
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="data"></param>
+            <param name="message"></param>
+            <returns></returns>
+        </member>
         <member name="T:Pushenger.Api.Controllers.CompanyController">
             <summary>
-            Firma İşlemlerini Yapar.
+            Firma Yönetim İşlemlerini Yapar.
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.CompanyController.#ctor(Pushenger.Core.Interfaces.IUnitOfWork,AutoMapper.IMapper,Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.BaseResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.CompanyResource})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="_unitOfWork"></param>
+            <param name="_mapper"></param>
+            <param name="_baseLocalizer"></param>
+            <param name="_localizer"></param>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.CompanyController.Insert(Pushenger.Api.Dto.Request.Company.InsertCompanyRequestDTO)">
+            <summary>
+            Yeni bir firma ve o firmaya ait yönetici kullanıcısı oluşturmak için kullanılır.
+            </summary>
+            <param name="dto">Oluşturulacak firmaya ve kullanıcıya ait veriler</param>
+            <returns></returns>
+        </member>
+        <member name="T:Pushenger.Api.Controllers.UserController">
+            <summary>
+            Kullanıcı İşlemlerini Yönetmek İçin Kullanılır.
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.UserController.LogIn(Pushenger.Api.Dto.Request.User.LoginRequestDTO)">
+            <summary>
+            Giriş Yapmak İçin Kullanılır.
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Request.Company.InsertCompanyRequestDTO">
+            <summary>
+            Firma oluşturulmak için kullanılır.
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Company.InsertCompanyRequestDTO.Name">
+            <summary>
+            Firma yetkili adı
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Company.InsertCompanyRequestDTO.Surname">
+            <summary>
+            Firma yetklisi soyadı
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Company.InsertCompanyRequestDTO.CompanyName">
+            <summary>
+            Firma adı
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Company.InsertCompanyRequestDTO.Email">
+            <summary>
+            Firma e-posta adresi
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Company.InsertCompanyRequestDTO.Password">
+            <summary>
+            Firma yetkili kullanıcı şifresi
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Request.Company.InsertCompanyRequestValidator">
+            <summary>
+            Firma oluşturma model validator
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Dto.Request.Company.InsertCompanyRequestValidator.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Request.User.LoginRequestDTO">
+            <summary>
+            Giriş Yapmak İçin Kullanılır.
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.User.LoginRequestDTO.Email">
+            <summary>
+            Email Adresi
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.User.LoginRequestDTO.Password">
+            <summary>
+            Şifre
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Response.Company.InsertCompanyResponse">
+            <summary>
+            Firma oluşturma işleminin sonucu
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Response.Company.InsertCompanyResponse.Id">
+            <summary>
+            Oluşturulan firmanın id değeri
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Models.BaseResult`1">
+            <summary>
+            Clientlara cevap olarak dönmesi gereken ortak model.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="P:Pushenger.Api.Models.BaseResult`1.Data">
+            <summary>
+            Clientlara iletilecek data
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Models.BaseResult`1.Message">
+            <summary>
+            Clientlara iletilecek mesaj
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Models.BaseResult`1.StatusCode">
+            <summary>
+            Clientlara iletilecek hata kodu
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Models.BaseResult`1.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Program">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Program.Main(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+        </member>
+        <member name="M:Pushenger.Api.Program.CreateHostBuilder(System.String[])">
+            <summary>
+            
+            </summary>
+            <param name="args"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pushenger.Api.Startup">
+            <summary>
+            Startup Class
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Startup.#ctor(Microsoft.Extensions.Configuration.IConfiguration)">
+            <summary>
+            Constructor
+            </summary>
+            <param name="configuration"></param>
+        </member>
+        <member name="P:Pushenger.Api.Startup.Configuration">
+            <summary>
+            Configuration Object
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Startup.ConfigureServices(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            Service Configuration
+            </summary>
+            <param name="services"></param>
+        </member>
+        <member name="M:Pushenger.Api.Startup.Configure(Microsoft.AspNetCore.Builder.IApplicationBuilder,Microsoft.AspNetCore.Hosting.IWebHostEnvironment)">
+            <summary>
+            Configure Application
+            </summary>
+            <param name="app"></param>
+            <param name="env"></param>
+        </member>
+        <member name="T:Pushenger.Api.Utilities.AutoMapperUtility">
+            <summary>
+            AutoMapper entegrasyonu
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Utilities.AutoMapperUtility.AddMapper(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pushenger.Api.Utilities.CultureUtility">
+            <summary>
+            Localization entegrasyonu
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Utilities.CultureUtility.AddCulture(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Utilities.CultureUtility.UseCulture(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pushenger.Api.Utilities.DependecyInjectUtility">
+            <summary>
+            DI katmanı
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Utilities.DependecyInjectUtility.AddInjection(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pushenger.Api.Utilities.FluentValidationUtility">
+            <summary>
+            Fluent Validation entegrasyonu
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Utilities.FluentValidationUtility.AddFluent(Microsoft.Extensions.DependencyInjection.IMvcBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="mvc"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pushenger.Api.Utilities.MapperProfile">
+            <summary>
+            AutoMapper entegrasyonu
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Utilities.MapperProfile.#ctor">
+            <summary>
+            
             </summary>
         </member>
     </members>

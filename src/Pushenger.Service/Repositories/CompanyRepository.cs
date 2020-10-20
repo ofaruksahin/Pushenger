@@ -25,7 +25,8 @@ namespace Pushenger.Service.Repositories
                 return new SuccessResult(Constant.CompanyMessages.CompanyAlreadyExists);
         }
 
-        public IResult Insert(Company company,User user)
+
+        public IResult Insert(Company company, User user)
         {
             company.Id = connection.Insert(company);
             if (company.Id < 1)
@@ -34,7 +35,7 @@ namespace Pushenger.Service.Repositories
             }
             else
             {
-                user.UserTypeId =enumUserType.Owner;
+                user.UserTypeId = enumUserType.Owner;
                 user.CompanyId = company.Id;
                 user.Password = EncryptProvider.Md5(user.UnHashedPassword);
                 user.Id = connection.Insert(user);
@@ -47,6 +48,14 @@ namespace Pushenger.Service.Repositories
                     return new SuccessResult();
                 }
             }
+        }
+        public IDataResult<Company> FindById(int Id)
+        {
+            Company company = connection.ExecuteCommand<Company>("SELECT * FROM company WHERE Id = @Id AND Status = 1", Id).FirstOrDefault();
+            if (company != null)
+                return new SuccessDataResult<Company>(company);
+            else
+                return new ErrorDataResult<Company>(null, Constant.CompanyMessages.CompanyNotFound);            
         }
     }
 }

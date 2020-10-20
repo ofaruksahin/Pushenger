@@ -5,7 +5,7 @@ using System.Data;
 
 namespace Pushenger.Service.Repositories
 {
-    public class RepositoryBase
+    public class RepositoryBase 
     {
         private IDbTransaction transaction { get; set; }
 
@@ -21,14 +21,14 @@ namespace Pushenger.Service.Repositories
             }
         }
 
-        protected ConnectionMultiplexer _cache
+        protected ConnectionMultiplexer cache
         {
             get
             {
                 if (cacheInstance == null)
                 {
                     Connections connections = Connections.Instance;
-                    //_cacheInstance = ConnectionMultiplexer.Connect(connections.RedisConnectionString);
+                    cacheInstance = ConnectionMultiplexer.Connect(connections.RedisConnectionString);
                 }
                 return cacheInstance;
             }
