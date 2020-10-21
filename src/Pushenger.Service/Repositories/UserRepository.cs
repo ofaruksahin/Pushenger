@@ -25,7 +25,7 @@ namespace Pushenger.Service.Repositories
                 return new ErrorResult();
             else
                 return new SuccessResult(Constant.CompanyMessages.UserAlreadyExists);
-        }
+        }       
 
         public IDataResult<User> FindByUser(string email, string password)
         {
@@ -53,13 +53,48 @@ namespace Pushenger.Service.Repositories
             string token = JWTManager.GenerateToken(user);
             try
             {
-                cache.GetDatabase((int)enumRedisDatabase.auth).StringSet(token, JsonConvert.SerializeObject(token));
+                cache.GetDatabase((int)enumRedisDatabase.auth).StringSet(token, JsonConvert.SerializeObject(user));
                 return new SuccessDataResult<string>(token);
             }
             catch (Exception ex)
             {
                 return new ErrorDataResult<string>("", Constant.UserMessages.LoginError);   
             }            
+        }
+
+        public IDataResult<User> CheckToken(string token)
+        {
+            try
+            {
+                var db =  cache.GetDatabase((int)enumRedisDatabase.auth);
+                bool exist = db.KeyExists(token);
+                if (!exist)
+                    return new ErrorDataResult<User>(null,Constant.TokenNotFound);
+                var value = db.StringGet(token);
+                return new SuccessDataResult<User>(JsonConvert.DeserializeObject<User>(value));
+            }
+            catch (Exception)
+            {
+                return new ErrorDataResult<User>(null, Constant.TokenNotFound);                
+            }            
+        }
+
+        public IDataResult<User> GetUser(int id)
+        {
+            User user = connection.ExecuteCommand<User>("SELECT * FROM user WHERE Id = @id AND Status = 1", id).FirstOrDefault();
+            if (user == null)
+                return new ErrorDataResult<User>(null);
+            return new SuccessDataResult<User>(user);
+        }
+
+        public IResult UpdateUser(User user)
+        {
+            if (!String.IsNullOrEmpty(user.UnHashedPassword))
+                user.Password = EncryptProvider.Md5(user.UnHashedPassword);
+            bool isUpdated = connection.Update(user);
+            if (isUpdated)
+                return new SuccessResult();
+            return new ErrorResult(Constant.UserMessages.UpdateError);
         }
     }
 }

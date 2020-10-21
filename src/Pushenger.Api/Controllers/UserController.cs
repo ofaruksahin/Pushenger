@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Microsoft.VisualBasic;
@@ -36,12 +37,13 @@ namespace Pushenger.Api.Controllers
         /// <param name="dto"></param>
         /// <returns></returns>
         [HttpPost("login")]
+        [AllowAnonymous]
         public IActionResult LogIn([FromBody] LoginRequestDTO dto)
         {
             LoginResponse response = new LoginResponse();
             IDataResult<User> existUser = unitOfWork.UserRepository.FindByUser(dto.Email, dto.Password);
             if (!existUser.Success)
-                return NotFound(response,localizer[existUser.Message]);
+                return NotFound(response, localizer[existUser.Message]);
             IDataResult<Company> company = unitOfWork.CompanyRepository.FindById(existUser.Data.CompanyId);
             if (!company.Success)
                 return NotFound(response, localizer[company.Message]);
@@ -53,6 +55,37 @@ namespace Pushenger.Api.Controllers
             response.Token = token.Data;
             response.ExpireDate = DateAndTime.Now.AddDays(1);
             return Ok(response);
+        }
+
+        /// <summary>
+        /// Kullanıcı Adı,Soyadı ve Şifresini Güncellemek İçin Kullanılır.
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [HttpPut("update")]
+        public IActionResult Update([FromBody] UpdateUserRequestDTO dto)
+        {
+            UpdateUserResponse response = new UpdateUserResponse();
+            Core.Entities.User user = GetUser;
+            user.Name = dto.Name;
+            user.Surname = dto.Surname;
+            user.UnHashedPassword = dto.UnHashedPassword;
+            IResult updateResult = unitOfWork.UserRepository.UpdateUser(user);
+            response.IsUpdated = updateResult.Success;
+            if (!updateResult.Success)
+                return NotFound(response, localizer[updateResult.Message]);
+            unitOfWork.Commit();
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Oturum Kapatma İşlemleri İçin Kullanılır.
+        /// </summary>
+        /// <returns></returns>
+        [HttpPost("logout")]
+        public IActionResult LogOut()
+        {
+            return new JsonResult(new { });
         }
     }
 }

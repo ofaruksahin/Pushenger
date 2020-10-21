@@ -123,4 +123,7 @@
   <data name="Successful" xml:space="preserve">
     <value>Your transaction has been completed successfully</value>
   </data>
+  <data name="TokenNotFound" xml:space="preserve">
+    <value>Your Session Expired</value>
+  </data>
 </root>

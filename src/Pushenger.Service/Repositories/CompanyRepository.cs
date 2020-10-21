@@ -49,9 +49,9 @@ namespace Pushenger.Service.Repositories
                 }
             }
         }
-        public IDataResult<Company> FindById(int Id)
+        public IDataResult<Company> FindById(int id)
         {
-            Company company = connection.ExecuteCommand<Company>("SELECT * FROM company WHERE Id = @Id AND Status = 1", Id).FirstOrDefault();
+            Company company = connection.ExecuteCommand<Company>("SELECT * FROM company WHERE Id = @id AND Status = 1", id).FirstOrDefault();
             if (company != null)
                 return new SuccessDataResult<Company>(company);
             else

@@ -123,4 +123,7 @@
   <data name="Successful" xml:space="preserve">
     <value>İşleminiz başarıyla tamamlandı.</value>
   </data>
+  <data name="TokenNotFound" xml:space="preserve">
+    <value>Oturumunuz Süresi Dolmuş.</value>
+  </data>
 </root>

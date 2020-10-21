@@ -24,5 +24,23 @@ namespace Pushenger.Core.Interfaces
         /// <param name="user"></param>
         /// <returns></returns>
         IDataResult<string> LogIn(User user);
+        /// <summary>
+        /// Aktif bir token var mı kontrol eder.
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        IDataResult<User> CheckToken(string token);
+        /// <summary>
+        /// İstenilen Id'ye Göre Aktif Kullanıcıyı Getirir.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        IDataResult<User> GetUser(int id);
+        /// <summary>
+        /// Kullanıcı Güncellemek İçin Kullanılır
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        IResult UpdateUser(User user);
     }
 }

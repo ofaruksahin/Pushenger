@@ -1,6 +1,7 @@
 ﻿using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using Pushenger.Api.Dto.Request.Company;
+using Pushenger.Api.Dto.Request.User;
 
 namespace Pushenger.Api.Utilities
 {
@@ -19,6 +20,7 @@ namespace Pushenger.Api.Utilities
             mvc.AddFluentValidation(fv =>
             {
                 fv.RegisterValidatorsFromAssemblyContaining<InsertCompanyRequestValidator>();
+                fv.RegisterValidatorsFromAssemblyContaining<UpdateUserRequestValidator>();
             });
             return mvc;
         }

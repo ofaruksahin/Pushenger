@@ -21,8 +21,8 @@ namespace Pushenger.Core.Interfaces
         /// <summary>
         /// İlgili Id'ye Göre Aktif Firma Bilgisini Getirir.
         /// </summary>
-        /// <param name="Id"></param>
+        /// <param name="id"></param>
         /// <returns></returns>
-        IDataResult<Company> FindById(int Id);
+        IDataResult<Company> FindById(int id);
     } 
 }

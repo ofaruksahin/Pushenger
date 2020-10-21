@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
+using Pushenger.Api.Filters;
 using Pushenger.Api.Models;
 using Pushenger.Core.Interfaces;
 using Pushenger.Core.Utilities;
@@ -14,6 +15,7 @@ namespace Pushenger.Api.Controllers
     /// </summary>
     [Route("api/[controller]")]
     [ApiController]
+    [Authenticated]
     public class BaseController
         : ControllerBase
     {
@@ -50,6 +52,14 @@ namespace Pushenger.Api.Controllers
             baseLocalizer = _baseLocalizer;
         }
 
+        /// <summary>
+        /// Giriş Yapan Kullanıcı Id Bilgisini Getirir.
+        /// </summary>
+        public int GetUserId => JWTManager.GetUserId(HttpContext, unitOfWork);
+        /// <summary>
+        /// Giriş Yapan Kullanıcıyı Getirir.
+        /// </summary>
+        public Core.Entities.User GetUser => JWTManager.GetUser(GetUserId, unitOfWork);
 
         /// <summary>
         /// İşlem başarılıysa clientlara bu şekilde dönüş sağlanır.

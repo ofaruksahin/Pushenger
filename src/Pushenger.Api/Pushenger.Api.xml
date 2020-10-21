@@ -32,6 +32,16 @@
             <param name="_mapper"></param>
             <param name="_baseLocalizer"></param>
         </member>
+        <member name="P:Pushenger.Api.Controllers.BaseController.GetUserId">
+            <summary>
+            Giriş Yapan Kullanıcı Id Bilgisini Getirir.
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Controllers.BaseController.GetUser">
+            <summary>
+            Giriş Yapan Kullanıcıyı Getirir.
+            </summary>
+        </member>
         <member name="M:Pushenger.Api.Controllers.BaseController.Ok``1(``0,System.String)">
             <summary>
             İşlem başarılıysa clientlara bu şekilde dönüş sağlanır.
@@ -146,6 +156,16 @@
         <member name="P:Pushenger.Api.Dto.Response.Company.InsertCompanyResponse.Id">
             <summary>
             Oluşturulan firmanın id değeri
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Response.User.UpdateUserResponse">
+            <summary>
+            Kullanıcı Güncellenip Güncellenemediği Bilgisini Döner
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Response.User.UpdateUserResponse.IsUpdated">
+            <summary>
+            Kullanıcı Güncellenip Güncellenemediği Bilgisini Döner
             </summary>
         </member>
         <member name="T:Pushenger.Api.Models.BaseResult`1">

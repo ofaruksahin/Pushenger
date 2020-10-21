@@ -55,7 +55,7 @@ namespace Pushenger.Service
         }
 
         public int Insert<T>(T item) where T : class, new()
-        {
+        {            
             try
             {
                 return (int)_connection.Insert(item, _transaction);
@@ -72,7 +72,7 @@ namespace Pushenger.Service
             try
             {
                 item.ModifiedDate = DateTime.Now;
-                _connection.Update(item, _transaction);
+                return _connection.Update(item, _transaction);
             }
             catch (Exception ex)
             {

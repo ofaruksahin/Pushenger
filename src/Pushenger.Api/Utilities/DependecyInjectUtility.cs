@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Localization;
 using Pushenger.Core.Interfaces;
 using Pushenger.Service;
 using Pushenger.Service.Repositories;

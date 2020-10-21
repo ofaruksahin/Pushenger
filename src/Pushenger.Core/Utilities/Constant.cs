@@ -4,6 +4,7 @@
     {
         public static string Successful => "Successful";
         public static string Error => "Error";
+        public static string TokenNotFound => "TokenNotFound";
 
         public static class CompanyMessages
         {
@@ -18,6 +19,8 @@
         {
             public static string UserNotFound => "UserNotFound";
             public static string LoginError => "LoginError";
+
+            public static string UpdateError => "UpdateError";
         }
     }
 }

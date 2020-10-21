@@ -121,15 +121,15 @@
     <value>Such a company already exists</value>
   </data>
   <data name="CompanyNotCreated" xml:space="preserve">
-    <value>Company Could Not Be Created</value>
+    <value>Company could not be created</value>
   </data>
   <data name="CompanyNotFound" xml:space="preserve">
     <value>Company not found</value>
   </data>
   <data name="UserAlreadyExists" xml:space="preserve">
-    <value>Such User Already Exists</value>
+    <value>Such user already exists</value>
   </data>
   <data name="UserNotCreated" xml:space="preserve">
-    <value>User Could Not Be Created</value>
+    <value>User could not be created</value>
   </data>
 </root>

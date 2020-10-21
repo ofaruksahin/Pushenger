@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Pushenger.Api.Dto.Request.Company;
@@ -41,6 +42,7 @@ namespace Pushenger.Api.Controllers
         /// <param name="dto">Oluşturulacak firmaya ve kullanıcıya ait veriler</param>
         /// <returns></returns>
         [HttpPost("insert")]
+        [AllowAnonymous]
         public IActionResult Insert([FromBody] InsertCompanyRequestDTO dto)
         {
             InsertCompanyResponse baseResult = new InsertCompanyResponse();
