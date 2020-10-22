@@ -17,6 +17,7 @@ namespace Pushenger.Api.Utilities
         {
             CreateMap<InsertCompanyRequestDTO, Company>();            
             CreateMap<Company, User>();
+            CreateMap<InsertUserRequestDTO, User>();
         }
     }
 }

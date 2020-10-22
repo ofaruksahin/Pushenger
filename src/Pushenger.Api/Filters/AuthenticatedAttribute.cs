@@ -16,13 +16,7 @@ namespace Pushenger.Api.Filters
 {
     public class AuthenticatedAttribute : Attribute, IActionFilter
     {
-        IUnitOfWork unitOfWork;
-        IStringLocalizer<BaseResource> localizer;
-
-        public AuthenticatedAttribute()
-        {
-            unitOfWork = new UnitOfWork();
-        }
+        IStringLocalizer<BaseResource> localizer;       
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
@@ -32,13 +26,16 @@ namespace Pushenger.Api.Filters
         {
             if (!context.Filters.Any(x => x.GetType() == typeof(AllowAnonymousFilter))) 
             {
-                localizer = (IStringLocalizer<BaseResource>)context.HttpContext.RequestServices.GetService(typeof(IStringLocalizer<BaseResource>));
-                var token = JWTManager.GetToken(context.HttpContext);
-                if (String.IsNullOrWhiteSpace(token))
-                    UnAuthorized(context);
-                IDataResult<Core.Entities.User> existUser = unitOfWork.UserRepository.CheckToken(token);
-                if (!existUser.Success)
-                    UnAuthorized(context);
+                using (IUnitOfWork unitOfWork = new UnitOfWork())
+                {
+                    localizer = (IStringLocalizer<BaseResource>)context.HttpContext.RequestServices.GetService(typeof(IStringLocalizer<BaseResource>));
+                    var token = JWTManager.GetToken(context.HttpContext);
+                    if (String.IsNullOrWhiteSpace(token))
+                        UnAuthorized(context);
+                    IDataResult<Core.Entities.User> existUser = unitOfWork.UserRepository.CheckToken(token);
+                    if (!existUser.Success)
+                        UnAuthorized(context);
+                }               
             }
         }
 

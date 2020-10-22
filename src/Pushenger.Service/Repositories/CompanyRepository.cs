@@ -57,5 +57,13 @@ namespace Pushenger.Service.Repositories
             else
                 return new ErrorDataResult<Company>(null, Constant.CompanyMessages.CompanyNotFound);            
         }
+
+        public IResult Update(Company company)
+        {
+            bool isUpdated = connection.Update(company);
+            if (isUpdated)
+                return new SuccessResult();
+            return new ErrorResult(Constant.CompanyMessages.CompanyNotUpdated);            
+        }
     }
 }

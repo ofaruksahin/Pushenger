@@ -24,5 +24,11 @@ namespace Pushenger.Core.Interfaces
         /// <param name="id"></param>
         /// <returns></returns>
         IDataResult<Company> FindById(int id);
+        /// <summary>
+        /// Firma bilgilerini güncellemek için kullanılır
+        /// </summary>
+        /// <param name="company"></param>
+        /// <returns></returns>
+        IResult Update(Company company);
     } 
 }

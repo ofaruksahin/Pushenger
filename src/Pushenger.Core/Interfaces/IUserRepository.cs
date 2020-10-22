@@ -42,5 +42,23 @@ namespace Pushenger.Core.Interfaces
         /// <param name="user"></param>
         /// <returns></returns>
         IResult UpdateUser(User user);
+        /// <summary>
+        /// Oturum Kapatmak İçin Kullanılır
+        /// </summary>
+        /// <param name="token"></param>
+        /// <returns></returns>
+        IResult LogOutUser(string token);
+        /// <summary>
+        /// Kullanıcı eklemek için kullanılır.
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        IResult Insert(User user);
+        /// <summary>
+        /// Kullanıcı Silmek İçin Kullanılır
+        /// </summary>
+        /// <param name="user"></param>
+        /// <returns></returns>
+        IResult Delete(User user);
     }
 }

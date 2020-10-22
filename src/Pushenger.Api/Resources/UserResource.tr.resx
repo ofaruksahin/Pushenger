@@ -120,8 +120,20 @@
   <data name="LoginError" xml:space="preserve">
     <value>Giriş yapılamadı</value>
   </data>
+  <data name="LogOuted" xml:space="preserve">
+    <value>Çıkış yapıldı</value>
+  </data>
   <data name="UpdateError" xml:space="preserve">
     <value>Kullanıcı güncellenemedi</value>
+  </data>
+  <data name="UserAlreadyExists" xml:space="preserve">
+    <value>Böyle bir kullanıcı zaten mevcut.</value>
+  </data>
+  <data name="UserNotCreated" xml:space="preserve">
+    <value>Kullanıcı oluşturulamadı</value>
+  </data>
+  <data name="UserNotDeleted" xml:space="preserve">
+    <value>Kullanıcı silinemedi</value>
   </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>Kullanıcı bulunamadı</value>

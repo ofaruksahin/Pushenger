@@ -42,6 +42,11 @@
             Giriş Yapan Kullanıcıyı Getirir.
             </summary>
         </member>
+        <member name="P:Pushenger.Api.Controllers.BaseController.GetToken">
+            <summary>
+            Giriş Yapan Kullanıcının Token Bilgisini Verir.
+            </summary>
+        </member>
         <member name="M:Pushenger.Api.Controllers.BaseController.Ok``1(``0,System.String)">
             <summary>
             İşlem başarılıysa clientlara bu şekilde dönüş sağlanır.
@@ -81,6 +86,12 @@
             <param name="dto">Oluşturulacak firmaya ve kullanıcıya ait veriler</param>
             <returns></returns>
         </member>
+        <member name="M:Pushenger.Api.Controllers.CompanyController.Update(Pushenger.Api.Dto.Request.Company.UpdateCompanyRequestDTO)">
+            <summary>
+            Giriş Yapan Kullanıcının Firma Bilgilerini Güncelleme
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Pushenger.Api.Controllers.UserController">
             <summary>
             Kullanıcı İşlemlerini Yönetmek İçin Kullanılır.
@@ -91,6 +102,33 @@
             Giriş Yapmak İçin Kullanılır.
             </summary>
             <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.UserController.Update(Pushenger.Api.Dto.Request.User.UpdateUserRequestDTO)">
+            <summary>
+            Kullanıcı Adı,Soyadı ve Şifresini Güncellemek İçin Kullanılır.
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.UserController.LogOut">
+            <summary>
+            Oturum Kapatma İşlemleri İçin Kullanılır.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.UserController.Insert(Pushenger.Api.Dto.Request.User.InsertUserRequestDTO)">
+            <summary>
+            Sistem yöneticisi tarafından o firmaya kullanıcı eklemek için kullanılır.
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.UserController.Delete(System.Int32)">
+            <summary>
+            Firma yöneticisi tarafından kullanıcı silmek için kullanılır
+            </summary>
+            <param name="id"></param>
             <returns></returns>
         </member>
         <member name="T:Pushenger.Api.Dto.Request.Company.InsertCompanyRequestDTO">
@@ -133,6 +171,32 @@
             Constructor
             </summary>
         </member>
+        <member name="T:Pushenger.Api.Dto.Request.Company.UpdateCompanyRequestDTO">
+            <summary>
+            Firma bilgilerini güncellemek için kullanılır.
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Company.UpdateCompanyRequestDTO.Name">
+            <summary>
+            Firma yetkili adı
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Company.UpdateCompanyRequestDTO.Surname">
+            <summary>
+            Firma yetkili soyadı
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Company.UpdateCompanyRequestDTO.CompanyName">
+            <summary>
+            Firma adı
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Pushenger.Api.Dto.Request.Company.UpdateCompanyRequestValidator" -->
+        <member name="T:Pushenger.Api.Dto.Request.User.InsertUserRequestDTO">
+            <summary>
+            Kullanıcı Eklemek İçin Kullanılır.
+            </summary>
+        </member>
         <member name="T:Pushenger.Api.Dto.Request.User.LoginRequestDTO">
             <summary>
             Giriş Yapmak İçin Kullanılır.
@@ -156,6 +220,16 @@
         <member name="P:Pushenger.Api.Dto.Response.Company.InsertCompanyResponse.Id">
             <summary>
             Oluşturulan firmanın id değeri
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Response.User.LogOutResponse">
+            <summary>
+            Oturum Kapatma İşlemleri İçin Kullanılır.
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Response.User.LogOutResponse.IsLogOut">
+            <summary>
+            Oturum kapatılma durumunu tutar.
             </summary>
         </member>
         <member name="T:Pushenger.Api.Dto.Response.User.UpdateUserResponse">

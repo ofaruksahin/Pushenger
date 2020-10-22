@@ -5,6 +5,7 @@ using Microsoft.Extensions.Localization;
 using Microsoft.VisualBasic;
 using Pushenger.Api.Dto.Request.User;
 using Pushenger.Api.Dto.Response.User;
+using Pushenger.Api.Filters;
 using Pushenger.Core.Entities;
 using Pushenger.Core.Interfaces;
 using Pushenger.Core.Utilities.Result;
@@ -85,7 +86,59 @@ namespace Pushenger.Api.Controllers
         [HttpPost("logout")]
         public IActionResult LogOut()
         {
-            return new JsonResult(new { });
+            LogOutResponse logOutResponse = new LogOutResponse();            
+            IResult result = unitOfWork.UserRepository.LogOutUser(GetToken);
+            logOutResponse.IsLogOut = result.Success;
+            return Ok(logOutResponse,localizer[result.Message]);            
+        }
+
+        /// <summary>
+        /// Sistem yöneticisi tarafından o firmaya kullanıcı eklemek için kullanılır.
+        /// </summary>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [HttpPost("insert")]
+        [IsOwner]
+        public IActionResult Insert([FromBody]InsertUserRequestDTO dto)
+        {
+            InsertUserResponse response = new InsertUserResponse();
+            IResult existUser = unitOfWork.UserRepository.CheckEmail(dto.Email);
+            if (existUser.Success)
+                return NotFound(response, localizer[existUser.Message]);
+            User currentUser = GetUser;
+            User user = mapper.Map<User>(dto);
+            user.CompanyId = currentUser.CompanyId;
+            user.UnHashedPassword = dto.Password;
+            user.CreatorId = currentUser.Id;
+            IResult insertUser = unitOfWork.UserRepository.Insert(user);
+            if (!insertUser.Success)
+                return NotFound(response, localizer[insertUser.Message]);
+            unitOfWork.Commit();
+            response.Id = user.Id;
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Firma yöneticisi tarafından kullanıcı silmek için kullanılır
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("delete/{id:int}")]
+        [IsOwner]
+        public IActionResult Delete(int id)
+        {
+            UserDeleteResponse response = new UserDeleteResponse();
+            User currentUser = GetUser;
+            IDataResult<User> userResult = unitOfWork.UserRepository.GetUser(id);
+            if (!userResult.Success)
+                return NotFound(response);
+            User user = userResult.Data;
+            IResult userDeleted = unitOfWork.UserRepository.Delete(user);
+            if (!userDeleted.Success)
+                return NotFound(response, localizer[userDeleted.Message]);
+            unitOfWork.Commit();
+            response.IsDeleted = userDeleted.Success;
+            return Ok(response);
         }
     }
 }

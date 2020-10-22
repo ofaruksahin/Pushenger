@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Localization;
 using Pushenger.Api.Dto.Request.Company;
 using Pushenger.Api.Dto.Response.Company;
+using Pushenger.Api.Filters;
 using Pushenger.Core.Entities;
 using Pushenger.Core.Interfaces;
 using Pushenger.Core.Utilities.Result;
@@ -67,6 +68,31 @@ namespace Pushenger.Api.Controllers
             baseResult.Id = company.Id;
 
             return Ok(baseResult);
+        }
+
+        /// <summary>
+        /// Giriş Yapan Kullanıcının Firma Bilgilerini Güncelleme
+        /// </summary>
+        /// <returns></returns>
+        [HttpPut("update")]
+        [IsOwner]
+        public IActionResult Update([FromBody]UpdateCompanyRequestDTO dto)
+        {
+            UpdateCompanyResponse response = new UpdateCompanyResponse();
+            Core.Entities.User user = GetUser;
+            IDataResult<Company> companyResult  = unitOfWork.CompanyRepository.FindById(user.CompanyId);
+            if (!companyResult.Success)
+                return NotFound(response, localizer[companyResult.Message]);
+            Company company = companyResult.Data;
+            company.Name = dto.Name;
+            company.Surname = dto.Surname;
+            company.CompanyName = dto.CompanyName;
+            IResult updateResult = unitOfWork.CompanyRepository.Update(company);
+            response.IsUpdated = updateResult.Success;
+            if (!updateResult.Success)
+                return NotFound(response, localizer[updateResult.Message]);            
+            unitOfWork.Commit();
+            return Ok(response);            
         }
     }
 }

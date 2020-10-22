@@ -96,5 +96,28 @@ namespace Pushenger.Service.Repositories
                 return new SuccessResult();
             return new ErrorResult(Constant.UserMessages.UpdateError);
         }
+
+        public IResult LogOutUser(string token)
+        {
+            cache.GetDatabase((int)enumRedisDatabase.auth).KeyDelete(token);
+            return new SuccessResult(Constant.LogOuted);
+        }
+
+        public IResult Insert(User user)
+        {
+            user.Password = EncryptProvider.Md5(user.UnHashedPassword);
+            user.Id = connection.Insert(user);
+            if (user.Id < 1)
+                return new ErrorResult();
+            return new SuccessResult();            
+        }
+
+        public IResult Delete(User user)
+        {
+            bool isDeleted = connection.Delete(user);
+            if (isDeleted)
+                return new SuccessResult();
+            return new ErrorResult(Constant.UserMessages.UserNotDeleted);
+        }
     }
 }

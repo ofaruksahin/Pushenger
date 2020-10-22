@@ -60,6 +60,10 @@ namespace Pushenger.Api.Controllers
         /// Giriş Yapan Kullanıcıyı Getirir.
         /// </summary>
         public Core.Entities.User GetUser => JWTManager.GetUser(GetUserId, unitOfWork);
+        /// <summary>
+        /// Giriş Yapan Kullanıcının Token Bilgisini Verir.
+        /// </summary>
+        public string GetToken => JWTManager.GetToken(HttpContext);
 
         /// <summary>
         /// İşlem başarılıysa clientlara bu şekilde dönüş sağlanır.

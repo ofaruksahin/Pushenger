@@ -126,6 +126,9 @@
   <data name="CompanyNotFound" xml:space="preserve">
     <value>Firma bulunamadı.</value>
   </data>
+  <data name="CompanyNotUpdated" xml:space="preserve">
+    <value>Firma bilgileri güncellenemedi</value>
+  </data>
   <data name="UserAlreadyExists" xml:space="preserve">
     <value>Böyle bir kullanıcı zaten mevcut.</value>
   </data>

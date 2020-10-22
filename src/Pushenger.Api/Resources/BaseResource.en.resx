@@ -126,4 +126,7 @@
   <data name="TokenNotFound" xml:space="preserve">
     <value>Your Session Expired</value>
   </data>
+  <data name="UnAuthorized" xml:space="preserve">
+    <value>Your authorization was not found</value>
+  </data>
 </root>

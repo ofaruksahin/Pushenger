@@ -120,8 +120,20 @@
   <data name="LoginError" xml:space="preserve">
     <value>Error encountered while logging in</value>
   </data>
+  <data name="LogOuted" xml:space="preserve">
+    <value>Logouted</value>
+  </data>
   <data name="UpdateError" xml:space="preserve">
     <value>User not updated</value>
+  </data>
+  <data name="UserAlreadyExists" xml:space="preserve">
+    <value>Such user already exists</value>
+  </data>
+  <data name="UserNotCreated" xml:space="preserve">
+    <value>User could not be created</value>
+  </data>
+  <data name="UserNotDeleted" xml:space="preserve">
+    <value>User could not be deleted</value>
   </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>User not found</value>

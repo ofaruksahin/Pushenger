@@ -126,6 +126,9 @@
   <data name="CompanyNotFound" xml:space="preserve">
     <value>Company not found</value>
   </data>
+  <data name="CompanyNotUpdated" xml:space="preserve">
+    <value>Company information could not be updated</value>
+  </data>
   <data name="UserAlreadyExists" xml:space="preserve">
     <value>Such user already exists</value>
   </data>

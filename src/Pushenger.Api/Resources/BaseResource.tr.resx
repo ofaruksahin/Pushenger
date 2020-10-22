@@ -124,6 +124,9 @@
     <value>İşleminiz başarıyla tamamlandı.</value>
   </data>
   <data name="TokenNotFound" xml:space="preserve">
-    <value>Oturumunuz Süresi Dolmuş.</value>
+    <value>Oturumunuz süresi dolmuş.</value>
+  </data>
+  <data name="UnAuthorized" xml:space="preserve">
+    <value>Bu işlemi yapmak için yetkiniz bulunamadı.</value>
   </data>
 </root>
