@@ -25,6 +25,7 @@
             public static string UpdateError => "UpdateError";
             public static string UserNotCreated => "UserNotCreated";
             public static string UserNotDeleted => "UserNotDeleted";
+            public static string UserNotDeletedYourself => "UserNotDeletedYourself";
         }
     }
 }

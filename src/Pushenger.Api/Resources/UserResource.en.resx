@@ -135,6 +135,9 @@
   <data name="UserNotDeleted" xml:space="preserve">
     <value>User could not be deleted</value>
   </data>
+  <data name="UserNotDeletedYourself" xml:space="preserve">
+    <value>You can't delete yourself</value>
+  </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>User not found</value>
   </data>

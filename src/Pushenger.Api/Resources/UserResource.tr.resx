@@ -135,6 +135,9 @@
   <data name="UserNotDeleted" xml:space="preserve">
     <value>Kullanıcı silinemedi</value>
   </data>
+  <data name="UserNotDeletedYourself" xml:space="preserve">
+    <value>Kendinizi silemezsiniz</value>
+  </data>
   <data name="UserNotFound" xml:space="preserve">
     <value>Kullanıcı bulunamadı</value>
   </data>

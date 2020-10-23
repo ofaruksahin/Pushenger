@@ -8,6 +8,7 @@ using Pushenger.Api.Dto.Response.User;
 using Pushenger.Api.Filters;
 using Pushenger.Core.Entities;
 using Pushenger.Core.Interfaces;
+using Pushenger.Core.Utilities;
 using Pushenger.Core.Utilities.Result;
 
 namespace Pushenger.Api.Controllers
@@ -133,6 +134,10 @@ namespace Pushenger.Api.Controllers
             if (!userResult.Success)
                 return NotFound(response);
             User user = userResult.Data;
+            if (user.CompanyId != currentUser.CompanyId)
+                return NotFound(response,localizer[Constant.UserMessages.UserNotFound]);
+            if (user.Id == currentUser.Id)
+                return NotFound(response,localizer[Constant.UserMessages.UserNotDeletedYourself]);
             IResult userDeleted = unitOfWork.UserRepository.Delete(user);
             if (!userDeleted.Success)
                 return NotFound(response, localizer[userDeleted.Message]);
