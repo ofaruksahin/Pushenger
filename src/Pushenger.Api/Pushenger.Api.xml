@@ -95,7 +95,7 @@
         <member name="T:Pushenger.Api.Controllers.UserController">
             <summary>
             Kullanıcı İşlemlerini Yönetmek İçin Kullanılır.
-            </summary>
+            </summary> 
         </member>
         <member name="M:Pushenger.Api.Controllers.UserController.LogIn(Pushenger.Api.Dto.Request.User.LoginRequestDTO)">
             <summary>
@@ -129,6 +129,14 @@
             Firma yöneticisi tarafından kullanıcı silmek için kullanılır
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.UserController.UpdateUserType(System.Int32,Pushenger.Api.Dto.Request.User.UpdateUserTypeRequestDTO)">
+            <summary>
+            Kullanıcı tipini değiştirmek için kullanılır.
+            </summary>
+            <param name="id"></param>
+            <param name="dto"></param>
             <returns></returns>
         </member>
         <member name="T:Pushenger.Api.Dto.Request.Company.InsertCompanyRequestDTO">
@@ -210,6 +218,16 @@
         <member name="P:Pushenger.Api.Dto.Request.User.LoginRequestDTO.Password">
             <summary>
             Şifre
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Request.User.UpdateUserTypeRequestDTO">
+            <summary>
+            Kullanıcı Tipi Güncellemek İçin Kullanılır.
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.User.UpdateUserTypeRequestDTO.UserType">
+            <summary>
+            Kullanıcı Tipi
             </summary>
         </member>
         <member name="T:Pushenger.Api.Dto.Response.Company.InsertCompanyResponse">

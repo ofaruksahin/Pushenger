@@ -2,6 +2,6 @@
 {
     public enum enumUserType
     {
-        Owner
+        Owner        
     }
 }

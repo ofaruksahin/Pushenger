@@ -15,9 +15,7 @@ namespace Pushenger.Api.Controllers
 {
     /// <summary>
     /// Kullanıcı İşlemlerini Yönetmek İçin Kullanılır.
-    /// </summary>
-    [Route("api/[controller]")]
-    [ApiController]
+    /// </summary> 
     public class UserController : BaseController
     {
         readonly IStringLocalizer<UserResource> localizer;
@@ -143,6 +141,33 @@ namespace Pushenger.Api.Controllers
                 return NotFound(response, localizer[userDeleted.Message]);
             unitOfWork.Commit();
             response.IsDeleted = userDeleted.Success;
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Kullanıcı tipini değiştirmek için kullanılır.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <param name="dto"></param>
+        /// <returns></returns>
+        [HttpPut("updateusertype/{id:int}")]
+        [IsOwner]
+        public IActionResult UpdateUserType(int id,[FromBody]UpdateUserTypeRequestDTO dto)
+        {
+            UpdateUserTypeResponse response = new UpdateUserTypeResponse();
+            User currentUser = GetUser;
+            IDataResult<User> userResult = unitOfWork.UserRepository.GetUser(id);
+            if (!userResult.Success)
+                return NotFound(response);
+            User user = userResult.Data;
+            if (user.CompanyId != currentUser.CompanyId)
+                return NotFound(response, localizer[Constant.UserMessages.UserNotFound]);
+            user.UserTypeId = dto.UserType;
+            IResult updated = unitOfWork.UserRepository.UpdateUser(user);
+            if (!updated.Success)
+                return NotFound(response, localizer[updated.Message]);
+            unitOfWork.Commit();
+            response.IsUpdated = updated.Success;
             return Ok(response);
         }
     }

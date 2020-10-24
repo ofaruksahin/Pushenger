@@ -23,6 +23,7 @@ namespace Pushenger.Api.Utilities
                 fv.RegisterValidatorsFromAssemblyContaining<UpdateUserRequestValidator>();
                 fv.RegisterValidatorsFromAssemblyContaining<UpdateCompanyRequestValidator>();
                 fv.RegisterValidatorsFromAssemblyContaining<InsertUserRequestValidator>();
+                fv.RegisterValidatorsFromAssemblyContaining<UpdateUserTypeRequestValidator>();
             });
             return mvc;
         }
