@@ -2,11 +2,13 @@
 {
     public static class Constant
     {
+        public static string DefaultTopicName = "First Topic";
+        #region Localization        
         public static string Successful => "Successful";
         public static string Error => "Error";
         public static string TokenNotFound => "TokenNotFound";
         public static string LogOuted => "LogOuted";
-        public static string UnAuthorized => "UnAuthorized";
+        public static string UnAuthorized => "UnAuthorized";        
 
         public static class CompanyMessages
         {
@@ -27,5 +29,22 @@
             public static string UserNotDeleted => "UserNotDeleted";
             public static string UserNotDeletedYourself => "UserNotDeletedYourself";
         }
+
+        public static class ProjectMessages
+        {
+            public static string ProjectAlreadyExists => "ProjectAlreadyExists";
+            public static string ProjectNotCreated => "ProjectNotCreated";
+        }
+
+        public static class TopicMessages
+        {
+            public static string TopicNotCreated => "TopicNotCreated";
+        }
+
+        public static class ProjectUserMessages
+        {
+            public static string ProjectUserNotCreated => "ProjectUserNotCreated";
+        }
+        #endregion
     }
 }

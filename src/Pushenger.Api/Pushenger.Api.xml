@@ -92,6 +92,18 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:Pushenger.Api.Controllers.ProjectController">
+            <summary>
+            Proje İşlemlerini Yönetmek İçin Kullanılır.
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.ProjectController.Insert(Pushenger.Api.Dto.Request.Project.InsertProjectRequestDTO)">
+            <summary>
+            Proje Oluşturmak İçin Kullanılır.
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
         <member name="T:Pushenger.Api.Controllers.UserController">
             <summary>
             Kullanıcı İşlemlerini Yönetmek İçin Kullanılır.
@@ -200,6 +212,21 @@
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "T:Pushenger.Api.Dto.Request.Company.UpdateCompanyRequestValidator" -->
+        <member name="T:Pushenger.Api.Dto.Request.Project.InsertProjectRequestDTO">
+            <summary>
+            Proje Eklemek İçin Kullanılır.
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Project.InsertProjectRequestDTO.Name">
+            <summary>
+            Proje Adı
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Request.Project.InsertProjectRequestValidator">
+            <summary>
+            Proje eklemek model validator
+            </summary>
+        </member>
         <member name="T:Pushenger.Api.Dto.Request.User.InsertUserRequestDTO">
             <summary>
             Kullanıcı Eklemek İçin Kullanılır.
@@ -238,6 +265,11 @@
         <member name="P:Pushenger.Api.Dto.Response.Company.InsertCompanyResponse.Id">
             <summary>
             Oluşturulan firmanın id değeri
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Response.Project.InsertProjectResponse">
+            <summary>
+            Proje oluşturma işlemi response
             </summary>
         </member>
         <member name="T:Pushenger.Api.Dto.Response.User.LogOutResponse">

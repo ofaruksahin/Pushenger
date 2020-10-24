@@ -16,6 +16,9 @@ namespace Pushenger.Service
 
         ICompanyRepository companyRepository;
         IUserRepository userRepository;
+        IProjectRepository projectRepository;
+        ITopicRepository topicRepository;
+        IProjectUserRepository projectUserRepository;
 
         public UnitOfWork()
         {
@@ -45,6 +48,29 @@ namespace Pushenger.Service
             get
             {
                 return userRepository ?? (userRepository = new UserRepository(transaction));
+            }
+        }
+
+        public IProjectRepository ProjectRepository {
+            get
+            {
+                return projectRepository ?? (projectRepository = new ProjectRepository(transaction));
+            }
+        }
+
+        public ITopicRepository TopicRepository
+        {
+            get
+            {
+                return topicRepository ?? (topicRepository = new TopicRepository(transaction));
+            }
+        }
+
+        public IProjectUserRepository ProjectUserRepository
+        {
+            get
+            {
+                return projectUserRepository ?? (projectUserRepository = new ProjectUserRepository(transaction));
             }
         }
 
@@ -101,6 +127,8 @@ namespace Pushenger.Service
         {
             companyRepository = null;
             userRepository = null;
+            projectRepository = null;
+            topicRepository = null;
         }
 
         private void dispose(bool disposing)
