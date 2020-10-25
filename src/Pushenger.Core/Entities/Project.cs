@@ -7,8 +7,8 @@ namespace Pushenger.Core.Entities
     public class Project : BaseEntity
     {
         public int CompanyId { get; set; }
-        public Guid UniqueKey { get; set; }
-        public Guid SenderKey { get; set; }
+        public string UniqueKey { get; set; }
+        public string SenderKey { get; set; }
         public string Name { get; set; }
     }
 }

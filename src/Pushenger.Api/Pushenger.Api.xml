@@ -104,6 +104,25 @@
             <param name="dto"></param>
             <returns></returns>
         </member>
+        <member name="M:Pushenger.Api.Controllers.ProjectController.Delete(System.Int32)">
+            <summary>
+            Proje silmek için kullanılır.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.ProjectController.List">
+            <summary>
+            Yetkili olunan projeleri görüntülemek için kullanılır.
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.ProjectController.ReGenerateKey(System.Int32)">
+            <summary>
+            Projeye ait uniquekey ve senderkey parametrelerini güncellemek için oluşturulur.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Pushenger.Api.Controllers.UserController">
             <summary>
             Kullanıcı İşlemlerini Yönetmek İçin Kullanılır.
@@ -265,6 +284,11 @@
         <member name="P:Pushenger.Api.Dto.Response.Company.InsertCompanyResponse.Id">
             <summary>
             Oluşturulan firmanın id değeri
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Response.Project.DeleteProjectResponse">
+            <summary>
+            Proje silme işlemini response
             </summary>
         </member>
         <member name="T:Pushenger.Api.Dto.Response.Project.InsertProjectResponse">

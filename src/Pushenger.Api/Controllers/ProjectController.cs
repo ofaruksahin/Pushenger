@@ -10,6 +10,7 @@ using Pushenger.Core.Interfaces;
 using Pushenger.Core.Utilities;
 using Pushenger.Core.Utilities.Result;
 using System;
+using System.Collections.Generic;
 
 namespace Pushenger.Api.Controllers
 {
@@ -54,8 +55,8 @@ namespace Pushenger.Api.Controllers
             Project project = new Project()
             {
                 CompanyId = currentUser.CompanyId,
-                UniqueKey = Guid.NewGuid(),
-                SenderKey = Guid.NewGuid(),
+                UniqueKey = Guid.NewGuid().ToString(),
+                SenderKey = Guid.NewGuid().ToString(),
                 Name = dto.Name,
                 CreatorId = currentUser.Id,
             };
@@ -88,6 +89,74 @@ namespace Pushenger.Api.Controllers
             response.SenderKey = project.SenderKey;
             response.DefaultTopicName = topic.Name;
             unitOfWork.Commit();
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Proje silmek için kullanılır.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpDelete("delete/{id:int}")]
+        [IsOwner]
+        public IActionResult Delete(int id)
+        {
+            DeleteProjectResponse response = new DeleteProjectResponse();
+            Core.Entities.User currentUser = GetUser;
+            IDataResult<Project> projectExists = unitOfWork.ProjectRepository.GetProject(id);
+            if (!projectExists.Success)
+                return NotFound(response, localizer[projectExists.Message]);
+            IDataResult<ProjectUserRel> authorizationExists = unitOfWork.ProjectUserRepository.CheckProjectUser(id, currentUser.Id);
+            if (!authorizationExists.Success)
+                return NotFound(response, projectUserLocalizer[authorizationExists.Message]);
+            IResult projectDeleted = unitOfWork.ProjectRepository.Delete(projectExists.Data);
+            if (!projectDeleted.Success)
+                return NotFound(response, localizer[projectDeleted.Message]);
+            unitOfWork.Commit();
+            response.IsDeleted = projectDeleted.Success;
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Yetkili olunan projeleri görüntülemek için kullanılır.
+        /// </summary>
+        [HttpGet("list")]
+        public IActionResult List()
+        {
+            ListProjectResponse response = new ListProjectResponse();
+            Core.Entities.User currentUser = GetUser;
+            IDataResult<List<Project>> userProjects = unitOfWork.ProjectRepository.GetProjects(currentUser.Id);
+            if (!userProjects.Success)
+                return NotFound(response, localizer[userProjects.Message]);
+            response.Projects = userProjects.Data;
+            return Ok(response);
+        }
+
+        /// <summary>
+        /// Projeye ait uniquekey ve senderkey parametrelerini güncellemek için oluşturulur.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpPut("regeneratekey/{id:int}")]
+        [IsOwner]
+        public IActionResult ReGenerateKey(int id)
+        {
+            ReGenerateKeyResponse response = new ReGenerateKeyResponse();
+            Core.Entities.User currentUser = GetUser;
+            IDataResult<Project> projectExists =  unitOfWork.ProjectRepository.GetProject(id);
+            if (!projectExists.Success)
+                return NotFound(response, localizer[projectExists.Message]);
+            IDataResult<ProjectUserRel> authorizationExists = unitOfWork.ProjectUserRepository.CheckProjectUser(id, currentUser.Id);
+            if (!authorizationExists.Success)
+                return NotFound(response, projectUserLocalizer[authorizationExists.Message]);
+            Project project = projectExists.Data;
+            project.UniqueKey = Guid.NewGuid().ToString();
+            project.SenderKey = Guid.NewGuid().ToString();
+            IResult projectUpdated = unitOfWork.ProjectRepository.Update(project);
+            if (!projectUpdated.Success)
+                return NotFound(response, localizer[projectUpdated.Message]);
+            unitOfWork.Commit();
+            response.Project = project;
             return Ok(response);
         }
     }

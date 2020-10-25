@@ -34,6 +34,10 @@
         {
             public static string ProjectAlreadyExists => "ProjectAlreadyExists";
             public static string ProjectNotCreated => "ProjectNotCreated";
+            public static string ProjectNotFound => "ProjectNotFound";
+            public static string ProjectNotDeleted => "ProjectNotDeleted";
+            public static string NotFoundAssignedProject => "NotFoundAssingedProject";
+            public static string ProjectNotUpdated => "ProjectNotUpdated";
         }
 
         public static class TopicMessages
@@ -44,6 +48,7 @@
         public static class ProjectUserMessages
         {
             public static string ProjectUserNotCreated => "ProjectUserNotCreated";
+            public static string UnAuthorized => "UnAuthorized";
         }
         #endregion
     }

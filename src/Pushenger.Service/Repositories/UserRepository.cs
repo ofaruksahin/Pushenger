@@ -20,7 +20,7 @@ namespace Pushenger.Service.Repositories
 
         public IResult CheckEmail(string email)
         {
-            User user = connection.ExecuteCommand<User>("SELECT * FROM user WHERE Email = @email AND Status = 1", email).FirstOrDefault();
+            User user = connection.ExecuteCommand<User>("SELECT * FROM user WHERE Email = @email AND Status = 1", email)?.FirstOrDefault();
             if (user == null)
                 return new ErrorResult();
             else
@@ -41,7 +41,7 @@ namespace Pushenger.Service.Repositories
                 ModifiedDate,
                 CreatorId,
                 Status
-            FROM user WHERE Email = @email AND Password = @password AND Status = 1", email, password).FirstOrDefault();
+            FROM user WHERE Email = @email AND Password = @password AND Status = 1", email, password)?.FirstOrDefault();
             if (user != null)
                 return new SuccessDataResult<User>(user);
             else
@@ -81,7 +81,7 @@ namespace Pushenger.Service.Repositories
 
         public IDataResult<User> GetUser(int id)
         {
-            User user = connection.ExecuteCommand<User>("SELECT * FROM user WHERE Id = @id AND Status = 1", id).FirstOrDefault();
+            User user = connection.ExecuteCommand<User>("SELECT * FROM user WHERE Id = @id AND Status = 1", id)?.FirstOrDefault();
             if (user == null)
                 return new ErrorDataResult<User>(null);
             return new SuccessDataResult<User>(user);

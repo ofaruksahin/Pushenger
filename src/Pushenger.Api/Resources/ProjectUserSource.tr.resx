@@ -120,4 +120,7 @@
   <data name="ProjectUserNotCreated" xml:space="preserve">
     <value>Projeye kullanıcı atanamadı</value>
   </data>
+  <data name="UnAuthorized" xml:space="preserve">
+    <value>Bu işlemi yapmak için yetkiniz bulunamadı</value>
+  </data>
 </root>

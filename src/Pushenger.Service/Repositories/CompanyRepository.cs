@@ -18,7 +18,7 @@ namespace Pushenger.Service.Repositories
 
         public IResult CheckEmail(string email)
         {
-            Company company = connection.ExecuteCommand<Company>("SELECT * FROM company WHERE Email = @email AND Status = 1", email).FirstOrDefault();
+            Company company = connection.ExecuteCommand<Company>("SELECT * FROM company WHERE Email = @email AND Status = 1", email)?.FirstOrDefault();
             if (company == null)
                 return new ErrorResult();
             else
@@ -51,7 +51,7 @@ namespace Pushenger.Service.Repositories
         }
         public IDataResult<Company> FindById(int id)
         {
-            Company company = connection.ExecuteCommand<Company>("SELECT * FROM company WHERE Id = @id AND Status = 1", id).FirstOrDefault();
+            Company company = connection.ExecuteCommand<Company>("SELECT * FROM company WHERE Id = @id AND Status = 1", id)?.FirstOrDefault();
             if (company != null)
                 return new SuccessDataResult<Company>(company);
             else

@@ -117,10 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="NotFoundAssingedProject" xml:space="preserve">
+    <value>Couldn't find a project belonging to you</value>
+  </data>
   <data name="ProjectAlreadyExists" xml:space="preserve">
     <value>Such a project already exists</value>
   </data>
   <data name="ProjectNotCreated" xml:space="preserve">
     <value>The project could not be created</value>
+  </data>
+  <data name="ProjectNotDeleted" xml:space="preserve">
+    <value>The project could not be deleted</value>
+  </data>
+  <data name="ProjectNotFound" xml:space="preserve">
+    <value>Project not found</value>
+  </data>
+  <data name="ProjectNotUpdated" xml:space="preserve">
+    <value>The project could not be updated</value>
   </data>
 </root>

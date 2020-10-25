@@ -8,8 +8,8 @@ namespace Pushenger.Api.Dto.Response.Project
     public class InsertProjectResponse
     {
         public int Id { get; set; }
-        public Guid UniqueKey { get; set; }
-        public Guid SenderKey { get; set; }
+        public string UniqueKey { get; set; }
+        public string SenderKey { get; set; }
         public string DefaultTopicName { get; set; }
     }
 }

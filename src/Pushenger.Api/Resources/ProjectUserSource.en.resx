@@ -120,4 +120,7 @@
   <data name="ProjectUserNotCreated" xml:space="preserve">
     <value>User could not be assigned to the project</value>
   </data>
+  <data name="UnAuthorized" xml:space="preserve">
+    <value>Your authorization was not found to perform this operation.</value>
+  </data>
 </root>

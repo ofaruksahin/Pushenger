@@ -11,5 +11,12 @@ namespace Pushenger.Core.Interfaces
         /// <param name="projectUserRel"></param>
         /// <returns></returns>
         IResult Insert(ProjectUserRel projectUserRel);
+        /// <summary>
+        /// Kullanıcı proje ile yetkili mi kontrol etmek için kullanılır.
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <param name="userId"></param>
+        /// <returns></returns>
+        IDataResult<ProjectUserRel> CheckProjectUser(int projectId, int userId);
     }
 }
