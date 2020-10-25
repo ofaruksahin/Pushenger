@@ -159,5 +159,29 @@ namespace Pushenger.Api.Controllers
             response.Project = project;
             return Ok(response);
         }
+
+        /// <summary>
+        /// Projeye Ait Bilgileri Getirmek İçin Kullanılır.
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        [HttpGet("get/{id:int}")]
+        public IActionResult Get(int id)
+        {
+            GetProjectResponse response = new GetProjectResponse();
+            IDataResult<Project> projectExists = unitOfWork.ProjectRepository.GetProject(id);
+            if (!projectExists.Success)
+                return NotFound(response, localizer[projectExists.Message]);
+            Core.Entities.User currentUser = GetUser;
+            IDataResult<ProjectUserRel> authorizationExists = unitOfWork.ProjectUserRepository.CheckProjectUser(id, currentUser.Id);
+            if (!authorizationExists.Success)
+                return NotFound(response, projectUserLocalizer[authorizationExists.Message]);
+            response.Project = projectExists.Data;
+            IDataResult<List<Topic>> projectTopics = unitOfWork.TopicRepository.List(id);
+            response.Topics = projectTopics.Data;
+            IDataResult<List<User>> projectUsers = unitOfWork.ProjectUserRepository.GetUsers(id);
+            response.Users = projectUsers.Data;
+            return Ok(response);
+        }
     }
 }

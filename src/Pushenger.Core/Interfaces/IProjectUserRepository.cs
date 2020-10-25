@@ -1,5 +1,6 @@
 ﻿using Pushenger.Core.Entities;
 using Pushenger.Core.Utilities.Result;
+using System.Collections.Generic;
 
 namespace Pushenger.Core.Interfaces
 {
@@ -18,5 +19,11 @@ namespace Pushenger.Core.Interfaces
         /// <param name="userId"></param>
         /// <returns></returns>
         IDataResult<ProjectUserRel> CheckProjectUser(int projectId, int userId);
+        /// <summary>
+        /// Projeye Ait Kullanıcıları Listelemek İçin Kullanılır.
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <returns></returns>
+        IDataResult<List<Core.Entities.User>> GetUsers(int projectId);
     }
 }

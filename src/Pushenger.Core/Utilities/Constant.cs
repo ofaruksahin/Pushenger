@@ -43,12 +43,14 @@
         public static class TopicMessages
         {
             public static string TopicNotCreated => "TopicNotCreated";
+            public static string ProjectTopicsNotFound => "ProjectTopicsNotFound";
         }
 
         public static class ProjectUserMessages
         {
             public static string ProjectUserNotCreated => "ProjectUserNotCreated";
             public static string UnAuthorized => "UnAuthorized";
+            public static string ProjectUsersNotFound => "ProjectUsersNotFound";
         }
         #endregion
     }

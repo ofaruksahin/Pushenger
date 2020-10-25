@@ -123,6 +123,13 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="M:Pushenger.Api.Controllers.ProjectController.Get(System.Int32)">
+            <summary>
+            Projeye Ait Bilgileri Getirmek İçin Kullanılır.
+            </summary>
+            <param name="id"></param>
+            <returns></returns>
+        </member>
         <member name="T:Pushenger.Api.Controllers.UserController">
             <summary>
             Kullanıcı İşlemlerini Yönetmek İçin Kullanılır.
