@@ -13,7 +13,7 @@ namespace Pushenger.Service.Repositories
         public TopicRepository(IDbTransaction transaction) 
             : base(transaction)
         {
-        }
+        }     
 
         public IResult Insert(Topic topic)
         {
@@ -29,6 +29,30 @@ namespace Pushenger.Service.Repositories
             if (topics == null || !topics.Any())
                 return new ErrorDataResult<List<Topic>>(null, Constant.TopicMessages.ProjectTopicsNotFound);
             return new SuccessDataResult<List<Topic>>(topics);
+        }
+
+        public IDataResult<Topic> Get(int id)
+        {
+            Topic topic = connection.ExecuteCommand<Topic>("SELECT * FROM topic WHERE Id = @id AND Status = 1",id)?.FirstOrDefault();
+            if (topic == null)
+                return new ErrorDataResult<Topic>(null,Constant.TopicMessages.TopicNotFound);
+            return new SuccessDataResult<Topic>(topic);
+        }
+
+        public IResult Update(Topic topic)
+        {
+            bool isUpdated = connection.Update(topic);
+            if (isUpdated)
+                return new SuccessResult();
+            return new ErrorResult(Constant.TopicMessages.TopicNotUpdated);
+        }
+
+        public IResult Delete(Topic topic)
+        {
+            bool isDeleted = connection.Delete(topic);
+            if (isDeleted)
+                return new SuccessResult();
+            return new ErrorResult(Constant.TopicMessages.TopicNotDeleted);
         }
     }
 }

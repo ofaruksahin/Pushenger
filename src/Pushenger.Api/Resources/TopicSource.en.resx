@@ -117,10 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DefaultTopicNotDeleted" xml:space="preserve">
+    <value>The default notification group cannot be deleted</value>
+  </data>
   <data name="ProjectTopicsNotFound" xml:space="preserve">
     <value>Notification group for the project not found</value>
   </data>
   <data name="TopicNotCreated" xml:space="preserve">
     <value>Could not create default notification group</value>
+  </data>
+  <data name="TopicNotDeleted" xml:space="preserve">
+    <value>Notification group could not be deleted</value>
+  </data>
+  <data name="TopicNotFound" xml:space="preserve">
+    <value>Notification group not found</value>
+  </data>
+  <data name="TopicNotUpdated" xml:space="preserve">
+    <value>Notification group could not be updated</value>
   </data>
 </root>

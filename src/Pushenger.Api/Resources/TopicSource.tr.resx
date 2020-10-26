@@ -117,10 +117,22 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="DefaultTopicNotDeleted" xml:space="preserve">
+    <value>Varsayılan bildirim grubu silinemez</value>
+  </data>
   <data name="ProjectTopicsNotFound" xml:space="preserve">
     <value>Projeye ait bildirim grubu bulunamadı</value>
   </data>
   <data name="TopicNotCreated" xml:space="preserve">
     <value>Varsayılan bildirim grubu oluşturulamadı</value>
+  </data>
+  <data name="TopicNotDeleted" xml:space="preserve">
+    <value>Bilidirim grubu silinemedi</value>
+  </data>
+  <data name="TopicNotFound" xml:space="preserve">
+    <value>Bildirim grubu bulunamadı</value>
+  </data>
+  <data name="TopicNotUpdated" xml:space="preserve">
+    <value>Bildirim grubu güncellenemedi</value>
   </data>
 </root>

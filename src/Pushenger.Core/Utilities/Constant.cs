@@ -44,6 +44,10 @@
         {
             public static string TopicNotCreated => "TopicNotCreated";
             public static string ProjectTopicsNotFound => "ProjectTopicsNotFound";
+            public static string TopicNotFound => "TopicNotFound";
+            public static string TopicNotUpdated => "TopicNotUpdated";
+            public static string DefaultGroupNotDeleted => "DefaultTopicNotDeleted";
+            public static string TopicNotDeleted => "TopicNotDeleted";
         }
 
         public static class ProjectUserMessages

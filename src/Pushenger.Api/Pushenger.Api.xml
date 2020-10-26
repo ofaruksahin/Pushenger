@@ -97,6 +97,15 @@
             Proje İşlemlerini Yönetmek İçin Kullanılır.
             </summary>
         </member>
+        <member name="M:Pushenger.Api.Controllers.ProjectController.GetProject``1(``0,System.Int32)">
+            <summary>
+            Proje getirme işlemi
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="response"></param>
+            <param name="projectId"></param>
+            <returns></returns>
+        </member>
         <member name="M:Pushenger.Api.Controllers.ProjectController.Insert(Pushenger.Api.Dto.Request.Project.InsertProjectRequestDTO)">
             <summary>
             Proje Oluşturmak İçin Kullanılır.
@@ -128,6 +137,63 @@
             Projeye Ait Bilgileri Getirmek İçin Kullanılır.
             </summary>
             <param name="id"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pushenger.Api.Controllers.TopicController">
+            <summary>
+            Proje topic işlemleri için kullanılır.
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.TopicController.#ctor(Pushenger.Core.Interfaces.IUnitOfWork,AutoMapper.IMapper,Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.BaseResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.TopicSource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.ProjectSource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Core.Entities.ProjectUserRel})">
+            <summary>
+            Constructor
+            </summary>
+            <param name="_unitOfWork"></param>
+            <param name="_mapper"></param>
+            <param name="_baseLocalizer"></param>
+            <param name="_localizer"></param>
+            <param name="_projectLocalizer"></param>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.TopicController.GetProject``1(``0,System.Int32)">
+            <summary>
+            Proje Getirme İşlemi
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="response"></param>
+            <param name="projectId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.TopicController.Get(System.Int32,System.Int32)">
+            <summary>
+            Topic bilgilerini getirmek için kullanılır.
+            </summary>
+            <param name="projectId"></param>
+            <param name="topicId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.TopicController.Insert(System.Int32,Pushenger.Api.Dto.Request.Topic.InsertTopicRequestDTO)">
+            <summary>
+            Topic oluşturmak için kullanılır.
+            </summary>
+            <param name="projectId"></param>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.TopicController.Update(System.Int32,System.Int32,Pushenger.Api.Dto.Request.Topic.UpdateTopicRequestDTO)">
+            <summary>
+            Topic güncellemek için kullanılır
+            </summary>
+            <param name="projectId"></param>
+            <param name="topicId"></param>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.TopicController.Delete(System.Int32,System.Int32)">
+            <summary>
+            Topic silmek için kullanılır
+            </summary>
+            <param name="projectId"></param>
+            <param name="topicId"></param>
             <returns></returns>
         </member>
         <member name="T:Pushenger.Api.Controllers.UserController">
@@ -253,6 +319,46 @@
             Proje eklemek model validator
             </summary>
         </member>
+        <member name="T:Pushenger.Api.Dto.Request.Topic.InsertTopicRequestDTO">
+            <summary>
+            Topic oluşturmak için kullanılır.
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Topic.InsertTopicRequestDTO.Name">
+            <summary>
+            Topic adı
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Request.Topic.InsertTopicRequestValidator">
+            <summary>
+            Topic oluşturma model validator
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Dto.Request.Topic.InsertTopicRequestValidator.#ctor">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Request.Topic.UpdateTopicRequestDTO">
+            <summary>
+            Topic güncellemek için kullanılır.
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Topic.UpdateTopicRequestDTO.Name">
+            <summary>
+            Topic adı
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Request.Topic.UpdateTopicRequestValidator">
+            <summary>
+            Topic güncelleme model validation
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Dto.Request.Topic.UpdateTopicRequestValidator.#ctor">
+            <summary>
+            Constructor
+            </summary>
+        </member>
         <member name="T:Pushenger.Api.Dto.Request.User.InsertUserRequestDTO">
             <summary>
             Kullanıcı Eklemek İçin Kullanılır.
@@ -301,6 +407,46 @@
         <member name="T:Pushenger.Api.Dto.Response.Project.InsertProjectResponse">
             <summary>
             Proje oluşturma işlemi response
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Response.Topic.DeleteTopicResponse">
+            <summary>
+            Topic silme response
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Response.Topic.DeleteTopicResponse.IsDeleted">
+            <summary>
+            Silinip silinememe durumu
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Response.Topic.GetTopicResponse">
+            <summary>
+            Topic getirmek için kullanılır.
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Response.Topic.GetTopicResponse.topic">
+            <summary>
+            Topic
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Response.Topic.InsertTopicResponse">
+            <summary>
+            Topic oluşturma response
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Response.Topic.InsertTopicResponse.Id">
+            <summary>
+            Oluşturulan topic id
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Response.Topic.UpdateTopicResponse">
+            <summary>
+            Topic güncelleme response
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Response.Topic.UpdateTopicResponse.IsUpdated">
+            <summary>
+            Topic güncellenme durumu
             </summary>
         </member>
         <member name="T:Pushenger.Api.Dto.Response.User.LogOutResponse">

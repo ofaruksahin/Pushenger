@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Pushenger.Api.Dto.Response.Project
+﻿namespace Pushenger.Api.Dto.Response.Project
 {
     /// <summary>
     /// Proje oluşturma işlemi response
@@ -10,6 +8,6 @@ namespace Pushenger.Api.Dto.Response.Project
         public int Id { get; set; }
         public string UniqueKey { get; set; }
         public string SenderKey { get; set; }
-        public string DefaultTopicName { get; set; }
+        public string TopicUniqueKey { get; set; }
     }
 }

@@ -18,5 +18,23 @@ namespace Pushenger.Core.Interfaces
         /// <param name="projectId"></param>
         /// <returns></returns>
         IDataResult<List<Topic>> List(int projectId);
+        /// <summary>
+        /// Aktif Topic getirmek için kullanılır
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
+        IDataResult<Topic> Get(int id);
+        /// <summary>
+        /// Topic güncellemek için kullanılır
+        /// </summary>
+        /// <param name="topic"></param>
+        /// <returns></returns>
+        IResult Update(Topic topic);
+        /// <summary>
+        /// Topic silmek için kullanılır
+        /// </summary>
+        /// <param name="topic"></param>
+        /// <returns></returns>
+        IResult Delete(Topic topic);
     }
 }

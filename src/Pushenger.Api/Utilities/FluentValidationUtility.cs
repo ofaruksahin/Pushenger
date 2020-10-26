@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using Pushenger.Api.Dto.Request.Company;
 using Pushenger.Api.Dto.Request.Project;
+using Pushenger.Api.Dto.Request.Topic;
 using Pushenger.Api.Dto.Request.User;
 
 namespace Pushenger.Api.Utilities
@@ -26,6 +27,8 @@ namespace Pushenger.Api.Utilities
                 fv.RegisterValidatorsFromAssemblyContaining<InsertUserRequestValidator>();
                 fv.RegisterValidatorsFromAssemblyContaining<UpdateUserTypeRequestValidator>();
                 fv.RegisterValidatorsFromAssemblyContaining<InsertProjectRequestValidator>();
+                fv.RegisterValidatorsFromAssemblyContaining<InsertTopicRequestValidator>();
+                fv.RegisterValidatorsFromAssemblyContaining<UpdateTopicRequestValidator>();
             });
             return mvc;
         }
