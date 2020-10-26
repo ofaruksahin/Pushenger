@@ -48,6 +48,7 @@ namespace Pushenger.Api
             services.AddCulture();
             services.AddInjection();
             services.AddMapper();
+            services.EnableSignalR();
         }
 
 
@@ -65,7 +66,7 @@ namespace Pushenger.Api
 
             app.UseCulture();
             app.UseMvc();
-
+            app.MapHubs();
         }
     }
 }
