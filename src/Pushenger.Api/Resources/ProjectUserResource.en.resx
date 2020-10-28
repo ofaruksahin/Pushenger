@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ProjectUserAlreadyExists" xml:space="preserve">
+    <value>This user already has authorization</value>
+  </data>
   <data name="ProjectUserNotCreated" xml:space="preserve">
     <value>User could not be assigned to the project</value>
+  </data>
+  <data name="ProjectUserNotDeleted" xml:space="preserve">
+    <value>The user could not be deleted from the project</value>
   </data>
   <data name="ProjectUsersNotFound" xml:space="preserve">
     <value>The user defined for the project could not be found</value>

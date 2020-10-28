@@ -129,6 +129,7 @@ namespace Pushenger.Service
             userRepository = null;
             projectRepository = null;
             topicRepository = null;
+            projectUserRepository = null;
         }
 
         private void dispose(bool disposing)

@@ -18,9 +18,9 @@ namespace Pushenger.Api.Controllers
     [Route("api/project")]
     public class TopicController : BaseController
     {
-        IStringLocalizer<TopicSource> localizer;
-        IStringLocalizer<ProjectSource> projectLocalizer;
-        IStringLocalizer<ProjectUserRel> projectUserLocalizer;
+        readonly IStringLocalizer<TopicResource> localizer;
+        readonly IStringLocalizer<ProjectResource> projectLocalizer;
+        readonly IStringLocalizer<ProjectUserRel> projectUserLocalizer;
 
         /// <summary>
         /// Constructor
@@ -30,12 +30,13 @@ namespace Pushenger.Api.Controllers
         /// <param name="_baseLocalizer"></param>
         /// <param name="_localizer"></param>
         /// <param name="_projectLocalizer"></param>
+        /// <param name="_projectUserLocalizer"></param>
         public TopicController(
             IUnitOfWork _unitOfWork,
             IMapper _mapper,
             IStringLocalizer<BaseResource> _baseLocalizer,
-            IStringLocalizer<TopicSource> _localizer,
-            IStringLocalizer<ProjectSource> _projectLocalizer,
+            IStringLocalizer<TopicResource> _localizer,
+            IStringLocalizer<ProjectResource> _projectLocalizer,
             IStringLocalizer<ProjectUserRel> _projectUserLocalizer
             )
             : base(_unitOfWork, _mapper, _baseLocalizer)

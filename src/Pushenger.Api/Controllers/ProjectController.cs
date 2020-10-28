@@ -19,16 +19,26 @@ namespace Pushenger.Api.Controllers
     /// </summary>
     public class ProjectController : BaseController
     {
-        IStringLocalizer<ProjectSource> localizer;
-        IStringLocalizer<TopicSource> topicLocalizer;
-        IStringLocalizer<ProjectUserSource> projectUserLocalizer;
+        IStringLocalizer<ProjectResource> localizer;
+        IStringLocalizer<TopicResource> topicLocalizer;
+        IStringLocalizer<ProjectUserResource> projectUserLocalizer;
+
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="_unitOfWork"></param>
+        /// <param name="_mapper"></param>
+        /// <param name="_baseLocalizer"></param>
+        /// <param name="_localizer"></param>
+        /// <param name="_topicLocalizer"></param>
+        /// <param name="_projectUserLocalizer"></param>
         public ProjectController(
             IUnitOfWork _unitOfWork,
             IMapper _mapper,
             IStringLocalizer<BaseResource> _baseLocalizer,
-            IStringLocalizer<ProjectSource> _localizer,
-            IStringLocalizer<TopicSource> _topicLocalizer,
-            IStringLocalizer<ProjectUserSource> _projectUserLocalizer
+            IStringLocalizer<ProjectResource> _localizer,
+            IStringLocalizer<TopicResource> _topicLocalizer,
+            IStringLocalizer<ProjectUserResource> _projectUserLocalizer
             )
             : base(_unitOfWork, _mapper, _baseLocalizer)
         {

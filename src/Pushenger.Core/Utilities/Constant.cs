@@ -55,6 +55,8 @@
             public static string ProjectUserNotCreated => "ProjectUserNotCreated";
             public static string UnAuthorized => "UnAuthorized";
             public static string ProjectUsersNotFound => "ProjectUsersNotFound";
+            public static string ProjectUserAlreadyExists => "ProjectUserAlreadyExists";
+            public static string ProjectUserNotDeleted => "ProjectUserNotDeleted";
         }
         #endregion
     }

@@ -97,6 +97,17 @@
             Proje İşlemlerini Yönetmek İçin Kullanılır.
             </summary>
         </member>
+        <member name="M:Pushenger.Api.Controllers.ProjectController.#ctor(Pushenger.Core.Interfaces.IUnitOfWork,AutoMapper.IMapper,Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.BaseResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.ProjectResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.TopicResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.Resources.ProjectUserResource})">
+            <summary>
+            ctor
+            </summary>
+            <param name="_unitOfWork"></param>
+            <param name="_mapper"></param>
+            <param name="_baseLocalizer"></param>
+            <param name="_localizer"></param>
+            <param name="_topicLocalizer"></param>
+            <param name="_projectUserLocalizer"></param>
+        </member>
         <member name="M:Pushenger.Api.Controllers.ProjectController.GetProject``1(``0,System.Int32)">
             <summary>
             Proje getirme işlemi
@@ -139,12 +150,52 @@
             <param name="id"></param>
             <returns></returns>
         </member>
+        <member name="T:Pushenger.Api.Controllers.ProjectUserController">
+            <summary>
+            Proje kullanıcı işlemlerini yönetmek için kullanılır.
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.ProjectUserController.#ctor(Pushenger.Core.Interfaces.IUnitOfWork,AutoMapper.IMapper,Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.BaseResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.Resources.ProjectUserResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.ProjectResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.UserResource})">
+            <summary>
+            
+            </summary>
+            <param name="_unitOfWork"></param>
+            <param name="_mapper"></param>
+            <param name="_baseLocalizer"></param>
+            <param name="_localizer"></param>
+            <param name="_projectLocalizer"></param>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.ProjectUserController.GetProject``1(``0,System.Int32)">
+            <summary>
+            Proje getirme işlemi
+            </summary>
+            <typeparam name="T"></typeparam>
+            <param name="response"></param>
+            <param name="projectId"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.ProjectUserController.Insert(System.Int32,Pushenger.Api.Dto.Request.ProjectUser.InsertProjectUserRequestDTO)">
+            <summary>
+            Projeye kullanıcı eklemek için kullanılır.
+            </summary>
+            <param name="projectId"></param>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.ProjectUserController.Delete(System.Int32,System.Int32)">
+            <summary>
+            Projeden kullanıcı silmek için kullanılır
+            </summary>
+            <param name="projectId"></param>
+            <param name="userId"></param>
+            <returns></returns>
+        </member>
         <member name="T:Pushenger.Api.Controllers.TopicController">
             <summary>
             Proje topic işlemleri için kullanılır.
             </summary>
         </member>
-        <member name="M:Pushenger.Api.Controllers.TopicController.#ctor(Pushenger.Core.Interfaces.IUnitOfWork,AutoMapper.IMapper,Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.BaseResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.TopicSource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.ProjectSource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Core.Entities.ProjectUserRel})">
+        <member name="M:Pushenger.Api.Controllers.TopicController.#ctor(Pushenger.Core.Interfaces.IUnitOfWork,AutoMapper.IMapper,Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.BaseResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.TopicResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.ProjectResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Core.Entities.ProjectUserRel})">
             <summary>
             Constructor
             </summary>
@@ -153,6 +204,7 @@
             <param name="_baseLocalizer"></param>
             <param name="_localizer"></param>
             <param name="_projectLocalizer"></param>
+            <param name="_projectUserLocalizer"></param>
         </member>
         <member name="M:Pushenger.Api.Controllers.TopicController.GetProject``1(``0,System.Int32)">
             <summary>
@@ -304,6 +356,21 @@
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "T:Pushenger.Api.Dto.Request.Company.UpdateCompanyRequestValidator" -->
+        <member name="T:Pushenger.Api.Dto.Request.ProjectUser.InsertProjectUserRequestDTO">
+            <summary>
+            Projeye Kullanıcı Eklemek İçin Kullanılır.
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.ProjectUser.InsertProjectUserRequestDTO.UserId">
+            <summary>
+            Eklenecek Kullanıcı Id
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Request.ProjectUser.InsertProjectUserRequestValidator">
+            <summary>
+            Projeye kullanıcı eklemek için kullanılır.
+            </summary>
+        </member>
         <member name="T:Pushenger.Api.Dto.Request.Project.InsertProjectRequestDTO">
             <summary>
             Proje Eklemek İçin Kullanılır.
@@ -397,6 +464,26 @@
         <member name="P:Pushenger.Api.Dto.Response.Company.InsertCompanyResponse.Id">
             <summary>
             Oluşturulan firmanın id değeri
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Response.ProjectUser.DeleteProjectUserResponse">
+            <summary>
+            Proje kullanıcısı silindi mi sonucusun tutar.
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Response.ProjectUser.DeleteProjectUserResponse.IsDeleted">
+            <summary>
+            Kullanıcı Silindi Mi?
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Response.ProjectUser.InsertProjectUserResponse">
+            <summary>
+            Projeye kullanıcı eklenme işlemi response
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Response.ProjectUser.InsertProjectUserResponse.Id">
+            <summary>
+            Oluşturulan kayıt Id
             </summary>
         </member>
         <member name="T:Pushenger.Api.Dto.Response.Project.DeleteProjectResponse">
@@ -595,6 +682,25 @@
             
             </summary>
             <param name="mvc"></param>
+            <returns></returns>
+        </member>
+        <member name="T:Pushenger.Api.Utilities.HubMappingUtility">
+            <summary>
+            SignalR
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Utilities.HubMappingUtility.EnableSignalR(Microsoft.Extensions.DependencyInjection.IServiceCollection)">
+            <summary>
+            
+            </summary>
+            <param name="services"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Utilities.HubMappingUtility.MapHubs(Microsoft.AspNetCore.Builder.IApplicationBuilder)">
+            <summary>
+            
+            </summary>
+            <param name="app"></param>
             <returns></returns>
         </member>
         <member name="T:Pushenger.Api.Utilities.MapperProfile">

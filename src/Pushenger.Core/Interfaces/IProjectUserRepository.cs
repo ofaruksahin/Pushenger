@@ -25,5 +25,11 @@ namespace Pushenger.Core.Interfaces
         /// <param name="projectId"></param>
         /// <returns></returns>
         IDataResult<List<Core.Entities.User>> GetUsers(int projectId);
+        /// <summary>
+        /// Kullanıcıyı projeden silmek için kullanılır.
+        /// </summary>
+        /// <param name="projectUserRel"></param>
+        /// <returns></returns>
+        IResult Delete(ProjectUserRel projectUserRel);
     }
 }

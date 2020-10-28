@@ -51,5 +51,13 @@ namespace Pushenger.Service.Repositories
                 return new ErrorDataResult<List<User>>(null, Constant.ProjectUserMessages.ProjectUsersNotFound);
             return new SuccessDataResult<List<User>>(users);
         }
+
+        public IResult Delete(ProjectUserRel projectUserRel)
+        {
+            bool IsDeleted = connection.Delete(projectUserRel);
+            if (IsDeleted)
+                return new SuccessResult();
+            return new ErrorResult(Constant.ProjectUserMessages.ProjectUserNotDeleted);
+        }
     }
 }

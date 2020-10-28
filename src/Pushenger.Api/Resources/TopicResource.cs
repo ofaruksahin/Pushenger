@@ -1,6 +1,6 @@
 ﻿namespace Pushenger.Api
 {
-    public class ProjectSource
+    public class TopicResource
     {
     }
 }

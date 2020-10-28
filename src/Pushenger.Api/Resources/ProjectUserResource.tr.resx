@@ -117,8 +117,14 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="ProjectUserAlreadyExists" xml:space="preserve">
+    <value>Bu kullanıcının zaten yetkisi mevcut</value>
+  </data>
   <data name="ProjectUserNotCreated" xml:space="preserve">
     <value>Projeye kullanıcı atanamadı</value>
+  </data>
+  <data name="ProjectUserNotDeleted" xml:space="preserve">
+    <value>Kullanıcı projeden silinemedi</value>
   </data>
   <data name="ProjectUsersNotFound" xml:space="preserve">
     <value>Projeye tanımlanmış kullanıcı bulunamadı</value>
