@@ -556,6 +556,11 @@
             Kullanıcı Güncellenip Güncellenemediği Bilgisini Döner
             </summary>
         </member>
+        <member name="T:Pushenger.Api.Hubs.SubscriptionHub">
+            <summary>
+            Bildirim sistemine abone olmak için kullanılır
+            </summary>
+        </member>
         <member name="T:Pushenger.Api.Models.BaseResult`1">
             <summary>
             Clientlara cevap olarak dönmesi gereken ortak model.

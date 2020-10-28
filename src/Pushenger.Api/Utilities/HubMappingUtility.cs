@@ -1,5 +1,9 @@
-﻿using Microsoft.AspNetCore.Builder;
+﻿using AutoMapper.Configuration;
+using environment.net.core;
+using Microsoft.AspNetCore.Builder;
+using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Pushenger.Api.Hubs;
 
 namespace Pushenger.Api.Utilities
 {
@@ -15,7 +19,10 @@ namespace Pushenger.Api.Utilities
         /// <returns></returns>
         public static IServiceCollection EnableSignalR(this IServiceCollection services)
         {
-            services.AddSignalR().AddStackExchangeRedis("");
+            IEnvironmentManager environmentManager = EnvironmentManager.Instance;
+            Microsoft.Extensions.Configuration.IConfiguration configuration = environmentManager.GetConfiguration();
+            var connectionString = (string)configuration.GetValue(typeof(string), "signalr_redis_connection");
+            services.AddSignalR().AddStackExchangeRedis(connectionString);
             return services;
         }
 
@@ -26,6 +33,10 @@ namespace Pushenger.Api.Utilities
         /// <returns></returns>
         public static IApplicationBuilder MapHubs(this IApplicationBuilder app)
         {
+            app.UseSignalR(routes =>
+            {
+                routes.MapHub<SubscriptionHub>("/subscription");
+            });
             return app;
         }
     }

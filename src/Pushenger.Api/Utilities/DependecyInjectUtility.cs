@@ -1,4 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
+using Pushenger.Api.HubDispatchers;
+using Pushenger.Api.IHubDispatchers;
 using Pushenger.Core.Interfaces;
 using Pushenger.Service;
 using Pushenger.Service.Repositories;
@@ -23,7 +25,11 @@ namespace Pushenger.Api.Utilities
             services.AddScoped<IUserRepository, UserRepository>();            
             services.AddScoped<IProjectRepository, ProjectRepository>();            
             services.AddScoped<ITopicRepository, TopicRepository>();            
-            services.AddScoped<IProjectUserRepository, ProjectUserRepository>();            
+            services.AddScoped<IProjectUserRepository, ProjectUserRepository>();
+
+            #region HubDispatchers
+            services.AddSingleton<ISubscriptionHubDispatcher, SubscriptionHubDispatcher>();
+            #endregion
             return services;
         }
     }
