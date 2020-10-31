@@ -62,7 +62,7 @@ namespace Pushenger.Api
             app.UseCors(x => x
               .AllowAnyOrigin()
               .AllowAnyMethod()
-             .AllowAnyHeader());
+              .AllowAnyHeader());
 
             app.UseCulture();
             app.UseMvc();

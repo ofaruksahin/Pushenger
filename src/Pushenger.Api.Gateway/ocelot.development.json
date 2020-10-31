@@ -11,7 +11,7 @@
       ],
       "UpstreamPathTemplate": "/{*}",
       "UpstreamHttpMethod": [ "GET", "POST", "PUT", "DELETE", "OPTIONS" ]
-    }
+    }    
   ],
   "GlobalConfiguration": {
     "BaseUrl": "http://localhost:51278"

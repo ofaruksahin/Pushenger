@@ -53,7 +53,7 @@ namespace Pushenger.Service.Repositories
             string token = JWTManager.GenerateToken(user);
             try
             {
-                cache.GetDatabase((int)enumRedisDatabase.auth).StringSet(token, JsonConvert.SerializeObject(user));
+                cache.GetDatabase((int)enumRedisDatabase.auth).StringSet(token, JsonConvert.SerializeObject(user),TimeSpan.FromDays(1));
                 return new SuccessDataResult<string>(token);
             }
             catch (Exception ex)

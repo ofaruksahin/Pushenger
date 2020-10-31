@@ -5,13 +5,15 @@ VisualStudioVersion = 16.0.30523.141
 MinimumVisualStudioVersion = 15.0.26124.0
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{0922F97A-28F1-4827-86A7-5CB35DAD36B4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pushenger.Api.Gateway", "src\Pushenger.Api.Gateway\Pushenger.Api.Gateway.csproj", "{4E77B4BC-FD6E-4070-B172-AD53F5627258}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pushenger.Api.Gateway", "src\Pushenger.Api.Gateway\Pushenger.Api.Gateway.csproj", "{4E77B4BC-FD6E-4070-B172-AD53F5627258}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pushenger.Api", "src\Pushenger.Api\Pushenger.Api.csproj", "{FF6276CA-9365-43AA-ADEE-9D6845C16A4A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pushenger.Api", "src\Pushenger.Api\Pushenger.Api.csproj", "{FF6276CA-9365-43AA-ADEE-9D6845C16A4A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pushenger.Core", "src\Pushenger.Core\Pushenger.Core.csproj", "{54B96542-1458-4293-9232-90D3F451D40E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pushenger.Core", "src\Pushenger.Core\Pushenger.Core.csproj", "{54B96542-1458-4293-9232-90D3F451D40E}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pushenger.Service", "src\Pushenger.Service\Pushenger.Service.csproj", "{6C4BBBE6-5BF5-42F6-94EF-1DAA9DE18B32}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pushenger.Service", "src\Pushenger.Service\Pushenger.Service.csproj", "{6C4BBBE6-5BF5-42F6-94EF-1DAA9DE18B32}"
+EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "Pushenger.SignalR.Client", "Pushenger.SignalR.Client\Pushenger.SignalR.Client.njsproj", "{F936A560-732E-4089-95E4-6D6E09CB2EA7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -71,6 +73,18 @@ Global
 		{6C4BBBE6-5BF5-42F6-94EF-1DAA9DE18B32}.Release|x64.Build.0 = Release|Any CPU
 		{6C4BBBE6-5BF5-42F6-94EF-1DAA9DE18B32}.Release|x86.ActiveCfg = Release|Any CPU
 		{6C4BBBE6-5BF5-42F6-94EF-1DAA9DE18B32}.Release|x86.Build.0 = Release|Any CPU
+		{F936A560-732E-4089-95E4-6D6E09CB2EA7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F936A560-732E-4089-95E4-6D6E09CB2EA7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F936A560-732E-4089-95E4-6D6E09CB2EA7}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{F936A560-732E-4089-95E4-6D6E09CB2EA7}.Debug|x64.Build.0 = Debug|Any CPU
+		{F936A560-732E-4089-95E4-6D6E09CB2EA7}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{F936A560-732E-4089-95E4-6D6E09CB2EA7}.Debug|x86.Build.0 = Debug|Any CPU
+		{F936A560-732E-4089-95E4-6D6E09CB2EA7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F936A560-732E-4089-95E4-6D6E09CB2EA7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F936A560-732E-4089-95E4-6D6E09CB2EA7}.Release|x64.ActiveCfg = Release|Any CPU
+		{F936A560-732E-4089-95E4-6D6E09CB2EA7}.Release|x64.Build.0 = Release|Any CPU
+		{F936A560-732E-4089-95E4-6D6E09CB2EA7}.Release|x86.ActiveCfg = Release|Any CPU
+		{F936A560-732E-4089-95E4-6D6E09CB2EA7}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

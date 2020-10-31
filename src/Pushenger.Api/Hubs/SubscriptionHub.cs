@@ -10,7 +10,7 @@ namespace Pushenger.Api.Hubs
     /// </summary>
     public class SubscriptionHub : Hub
     {
-        IUnitOfWork unitOfWork;
+        IUnitOfWork unitOfWork;       
 
         public SubscriptionHub(IUnitOfWork _unitOfWork)
         {
@@ -18,7 +18,7 @@ namespace Pushenger.Api.Hubs
         }
 
         public override Task OnConnectedAsync()
-        {
+        {         
             return base.OnConnectedAsync();
         }
 
