@@ -54,5 +54,21 @@ namespace Pushenger.Service.Repositories
                 return new SuccessResult();
             return new ErrorResult(Constant.TopicMessages.TopicNotDeleted);
         }
+
+        public IDataResult<Topic> GetTopicWithUniqueKey(string uniqueKey)
+        {
+            Topic topic = connection.ExecuteCommand<Topic>("SELECT * FROM topic WHERE UniqueKey = @uniqueKey AND Status = 1", uniqueKey)?.FirstOrDefault();
+            if (topic == null)
+                return new ErrorDataResult<Topic>(null, Constant.TopicMessages.TopicNotFound);
+            return new SuccessDataResult<Topic>(topic);
+        }
+
+        public IDataResult<Topic> GetDefaultTopic(int projectId)
+        {
+            Topic topic = connection.ExecuteCommand<Topic>("SELECT * FROM topic WHERE ProjectId = @projectId AND IsDefault = 1 AND Status = 1", projectId)?.FirstOrDefault();
+            if (topic == null)
+                return new ErrorDataResult<Topic>(null, Constant.TopicMessages.TopicNotFound);
+            return new SuccessDataResult<Topic>(topic);
+        }
     }
 }

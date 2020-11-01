@@ -43,5 +43,11 @@ namespace Pushenger.Core.Interfaces
         /// <param name="project"></param>
         /// <returns></returns>
         IResult Update(Project project);
+        /// <summary>
+        /// Projenin Unique Id Değerine Göre Kaydını Getirir.
+        /// </summary>
+        /// <param name="uniqueKey"></param>
+        /// <returns></returns>
+        IDataResult<Project> GetProjectWithUniqueKey(string uniqueKey);
     }
 }

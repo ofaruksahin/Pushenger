@@ -26,6 +26,7 @@ namespace Pushenger.Api.Utilities
             services.AddScoped<IProjectRepository, ProjectRepository>();            
             services.AddScoped<ITopicRepository, TopicRepository>();            
             services.AddScoped<IProjectUserRepository, ProjectUserRepository>();
+            services.AddScoped<ISubscriptionRepository, SubscriptionRepository>();
 
             #region HubDispatchers
             services.AddSingleton<ISubscriptionHubDispatcher, SubscriptionHubDispatcher>();

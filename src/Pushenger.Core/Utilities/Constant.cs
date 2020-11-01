@@ -58,6 +58,11 @@
             public static string ProjectUserAlreadyExists => "ProjectUserAlreadyExists";
             public static string ProjectUserNotDeleted => "ProjectUserNotDeleted";
         }
+
+        public static class SubscriptionMessages
+        {
+            public static string SubscriptionNotInserted => "SubscriptionNotInserted";
+        }
         #endregion
     }
 }

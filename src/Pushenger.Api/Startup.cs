@@ -33,17 +33,16 @@ namespace Pushenger.Api
         /// <param name="services"></param>
         public void ConfigureServices(IServiceCollection services)
         {
-            var mvcBuilder = services.AddControllers(options=> {
-                options.EnableEndpointRouting = false;
-            }).SetCompatibilityVersion(CompatibilityVersion.Latest);
+            services.AddCors();
+            services.AddControllers();
+            var mvcBuilder = services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(CompatibilityVersion.Latest);
 
             services.Configure<ForwardedHeadersOptions>(options =>
             {
                 options.ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto;
-            });            
+            });
 
             mvcBuilder.AddFluent();
-            services.AddCors();
 
             services.AddCulture();
             services.AddInjection();
@@ -64,8 +63,8 @@ namespace Pushenger.Api
               .AllowAnyMethod()
               .AllowAnyHeader());
 
-            app.UseCulture();
             app.UseMvc();
+            app.UseCulture();
             app.MapHubs();
         }
     }

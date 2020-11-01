@@ -1,13 +1,8 @@
-﻿using AutoMapper.Configuration;
-using environment.net.core;
+﻿using environment.net.core;
 using Microsoft.AspNetCore.Builder;
-using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Pushenger.Api.Hubs;
-using StackExchange.Redis;
-using System;
-using System.Net;
 
 namespace Pushenger.Api.Utilities
 {

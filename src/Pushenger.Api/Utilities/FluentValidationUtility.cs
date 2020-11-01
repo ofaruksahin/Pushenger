@@ -1,6 +1,7 @@
 ﻿using FluentValidation.AspNetCore;
 using Microsoft.Extensions.DependencyInjection;
 using Pushenger.Api.Dto.Request.Company;
+using Pushenger.Api.Dto.Request.Hubs.Subscription;
 using Pushenger.Api.Dto.Request.Project;
 using Pushenger.Api.Dto.Request.ProjectUser;
 using Pushenger.Api.Dto.Request.Topic;
@@ -31,6 +32,7 @@ namespace Pushenger.Api.Utilities
                 fv.RegisterValidatorsFromAssemblyContaining<InsertTopicRequestValidator>();
                 fv.RegisterValidatorsFromAssemblyContaining<UpdateTopicRequestValidator>();
                 fv.RegisterValidatorsFromAssemblyContaining<InsertProjectUserRequestDTO>();
+                fv.RegisterValidatorsFromAssemblyContaining<SubscriptionOnConnectedValidator>();
             });
             return mvc;
         }

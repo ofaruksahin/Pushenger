@@ -65,5 +65,13 @@ namespace Pushenger.Service.Repositories
                 return new SuccessResult();
             return new ErrorResult(Constant.ProjectMessages.ProjectNotUpdated);
         }
+
+        public IDataResult<Project> GetProjectWithUniqueKey(string uniqueKey)
+        {
+            var project = connection.ExecuteCommand<Project>("SELECT * FROM project WHERE UniqueKey=@uniqueKey AND Status = 1",uniqueKey)?.FirstOrDefault();
+            if (project != null)
+                return new SuccessDataResult<Project>(project);
+            return new ErrorDataResult<Project>(null, Constant.ProjectMessages.ProjectNotFound);
+        }
     }
 }

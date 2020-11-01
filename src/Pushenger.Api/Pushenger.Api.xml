@@ -356,6 +356,16 @@
             </summary>
         </member>
         <!-- Badly formed XML comment ignored for member "T:Pushenger.Api.Dto.Request.Company.UpdateCompanyRequestValidator" -->
+        <member name="T:Pushenger.Api.Dto.Request.Hubs.Subscription.SubscriptionOnConnected">
+            <summary>
+            Bildirim İçin Kullanıcıyı Projeye Subscribe Eder.
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Request.Hubs.Subscription.SubscriptionOnConnectedValidator">
+            <summary>
+            Kullanıcıyı Projeye Subscribe Etme Validator
+            </summary>
+        </member>
         <member name="T:Pushenger.Api.Dto.Request.ProjectUser.InsertProjectUserRequestDTO">
             <summary>
             Projeye Kullanıcı Eklemek İçin Kullanılır.
@@ -555,6 +565,37 @@
             <summary>
             Kullanıcı Güncellenip Güncellenemediği Bilgisini Döner
             </summary>
+        </member>
+        <member name="T:Pushenger.Api.Hubs.BaseHub">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="F:Pushenger.Api.Hubs.BaseHub.unitOfWork">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Hubs.BaseHub.HttpContext">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Hubs.BaseHub.ConnectionId">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Hubs.BaseHub.Query">
+            <summary>
+            
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Hubs.BaseHub.#ctor(Pushenger.Core.Interfaces.IUnitOfWork)">
+            <summary>
+            
+            </summary>
+            <param name="_unitOfWork"></param>
         </member>
         <member name="T:Pushenger.Api.Hubs.SubscriptionHub">
             <summary>

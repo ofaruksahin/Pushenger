@@ -36,5 +36,17 @@ namespace Pushenger.Core.Interfaces
         /// <param name="topic"></param>
         /// <returns></returns>
         IResult Delete(Topic topic);
+        /// <summary>
+        /// UniqueKey göre topic getirme işlemi
+        /// </summary>
+        /// <param name="uniqueKey"></param>
+        /// <returns></returns>
+        IDataResult<Topic> GetTopicWithUniqueKey(string uniqueKey);
+        /// <summary>
+        /// Projeye Ait Default Bir Topic Getirir.
+        /// </summary>
+        /// <param name="projectId"></param>
+        /// <returns></returns>
+        IDataResult<Topic> GetDefaultTopic(int projectId);
     }
 }

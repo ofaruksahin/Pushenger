@@ -19,6 +19,7 @@ namespace Pushenger.Service
         IProjectRepository projectRepository;
         ITopicRepository topicRepository;
         IProjectUserRepository projectUserRepository;
+        ISubscriptionRepository subscriptionRepository;
 
         public UnitOfWork()
         {
@@ -71,6 +72,14 @@ namespace Pushenger.Service
             get
             {
                 return projectUserRepository ?? (projectUserRepository = new ProjectUserRepository(transaction));
+            }
+        }
+
+        public ISubscriptionRepository SubscriptionRepository
+        {
+            get
+            {
+                return subscriptionRepository ?? (subscriptionRepository = new SubscriptionRepository(transaction));
             }
         }
 
@@ -130,6 +139,7 @@ namespace Pushenger.Service
             projectRepository = null;
             topicRepository = null;
             projectUserRepository = null;
+            subscriptionRepository = null;
         }
 
         private void dispose(bool disposing)
