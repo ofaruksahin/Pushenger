@@ -1,0 +1,19 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="NotificationServiceItem.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="NotificationServiceItem.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Pushenger.Notification.Service.Core\Pushenger.Notification.Service.Core.csproj" />
+  </ItemGroup>
+
+</Project>

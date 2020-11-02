@@ -5,18 +5,18 @@ using System.Reflection;
 
 namespace Pushenger.Core.Utilities
 {
-    public static class IQueryCollectionMapper
+    public static class IHeaderDictionaryMapper
     {
-        public static T Map<T>(this IQueryCollection queryCollection)
+        public static T Map<T>(this IHeaderDictionary headers)
         {
             try
             {
                 T result = (T)Activator.CreateInstance(typeof(T));
                 PropertyInfo[] properties = result.GetType().GetProperties();
-                foreach (var key in queryCollection.Keys)
+                foreach (var key in headers.Keys)
                 {
                     StringValues queryValue;
-                    queryCollection.TryGetValue(key, out queryValue);
+                    headers.TryGetValue(key, out queryValue);
                     if (!String.IsNullOrEmpty(queryValue))
                     {
                         foreach (PropertyInfo property in properties)
@@ -30,8 +30,8 @@ namespace Pushenger.Core.Utilities
             }
             catch (Exception)
             {
-                return default(T);   
-            }            
+                return default(T);
+            }
         }
     }
 }

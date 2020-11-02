@@ -11,5 +11,17 @@ namespace Pushenger.Core.Interfaces
         /// <param name="subscription"></param>
         /// <returns></returns>
         IResult Insert(Subscription subscription);
+        /// <summary>
+        /// Bağlantı Anahtarına Göre Kullanıcı Bulma İçin Kullanılır.
+        /// </summary>
+        /// <param name="connectionId"></param>
+        /// <returns></returns>
+        IDataResult<Subscription> GetSubscriptionWithConnectionId(string connectionId);
+        /// <summary>
+        /// Subscribe bilgilerini günceller
+        /// </summary>
+        /// <param name="subscription"></param>
+        /// <returns></returns>
+        IResult Update(Subscription subscription);
     }
 }

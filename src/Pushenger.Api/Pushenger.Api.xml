@@ -366,6 +366,61 @@
             Kullanıcıyı Projeye Subscribe Etme Validator
             </summary>
         </member>
+        <member name="T:Pushenger.Api.Dto.Request.Notification.IsNotificationServiceModel">
+            <summary>
+            Proje bilgilerini headersdan almak için kullanılır.
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Request.Notification.IsNotificationServiceModelValidator">
+            <summary>
+            Proje bilgilerini validate etmek için kullanılır
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Request.Notification.SendNotificationRequestDTO">
+            <summary>
+            Bildirim gönderme işlemi
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Notification.SendNotificationRequestDTO.Title">
+            <summary>
+            Bildirim başlığı
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Notification.SendNotificationRequestDTO.Body">
+            <summary>
+            Bildirim içeriği
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Notification.SendNotificationRequestDTO.Badge">
+            <summary>
+            Küçük resim
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Notification.SendNotificationRequestDTO.Image">
+            <summary>
+            resim
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Notification.SendNotificationRequestDTO.TopicKey">
+            <summary>
+            Belirli bir gruba bildirim göndermek için kullanılır.
+            </summary>
+        </member>
+        <member name="P:Pushenger.Api.Dto.Request.Notification.SendNotificationRequestDTO.To">
+            <summary>
+            Belirli bir kişiye göndermek için kullanılır.
+            </summary>
+        </member>
+        <member name="T:Pushenger.Api.Dto.Request.Notification.SendNotificationRequestValidator">
+            <summary>
+            Bildirim gönderme model validation
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Dto.Request.Notification.SendNotificationRequestValidator.#ctor">
+            <summary>
+            ctor
+            </summary>
+        </member>
         <member name="T:Pushenger.Api.Dto.Request.ProjectUser.InsertProjectUserRequestDTO">
             <summary>
             Projeye Kullanıcı Eklemek İçin Kullanılır.

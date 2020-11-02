@@ -117,7 +117,13 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="SubscriptionNotFound" xml:space="preserve">
+    <value>Not found someone subscribed to the notification service</value>
+  </data>
   <data name="SubscriptionNotInserted" xml:space="preserve">
     <value>Could not subscribe to the notification system</value>
+  </data>
+  <data name="SubscriptionNotUpdated" xml:space="preserve">
+    <value>The subscriber could not be updated</value>
   </data>
 </root>

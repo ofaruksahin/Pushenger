@@ -24,7 +24,7 @@ namespace Pushenger.Api.Filters
 
         public void OnActionExecuting(ActionExecutingContext context)
         {
-            if (!context.Filters.Any(x => x.GetType() == typeof(AllowAnonymousFilter))) 
+            if (!context.Filters.Any(x => x.GetType() == typeof(AllowAnonymousFilter) || x.GetType() == typeof(IsNotificationServiceAttribute))) 
             {
                 using (IUnitOfWork unitOfWork = new UnitOfWork())
                 {

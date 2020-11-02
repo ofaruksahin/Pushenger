@@ -62,6 +62,8 @@
         public static class SubscriptionMessages
         {
             public static string SubscriptionNotInserted => "SubscriptionNotInserted";
+            public static string SubscriptionNotFound => "SubscriptionNotFound";
+            public static string SubscriptionNotUpdated => "SubscriptionNotUpdated";
         }
         #endregion
     }
