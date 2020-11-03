@@ -92,6 +92,30 @@
             </summary>
             <returns></returns>
         </member>
+        <member name="T:Pushenger.Api.Controllers.NotificationController">
+            <summary>
+            Bildirim göndermek için kullanılır.
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.NotificationController.#ctor(Pushenger.Core.Interfaces.IUnitOfWork,AutoMapper.IMapper,Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.BaseResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.NotificationResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.ProjectResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.TopicResource},Microsoft.Extensions.Localization.IStringLocalizer{Pushenger.Api.SubscriptionResource},Pushenger.Api.IHubDispatchers.ISubscriptionHubDispatcher)">
+            <summary>
+            ctor
+            </summary>
+            <param name="_unitOfWork"></param>
+            <param name="_mapper"></param>
+            <param name="_baseLocalizer"></param>
+            <param name="_localizer"></param>
+            <param name="_projectLocalizer"></param>
+            <param name="_topicLocalizer"></param>
+            <param name="_subscriptionLocalizer"></param>
+        </member>
+        <member name="M:Pushenger.Api.Controllers.NotificationController.Send(Pushenger.Api.Dto.Request.Notification.SendNotificationRequestDTO)">
+            <summary>
+            Bildirim güncellemek için kullanılır.
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
         <member name="T:Pushenger.Api.Controllers.ProjectController">
             <summary>
             Proje İşlemlerini Yönetmek İçin Kullanılır.
@@ -620,6 +644,25 @@
             <summary>
             Kullanıcı Güncellenip Güncellenemediği Bilgisini Döner
             </summary>
+        </member>
+        <member name="T:Pushenger.Api.HubDispatchers.SubscriptionHubDispatcher">
+            <summary>
+            Bildirim gönderme servisi
+            </summary>
+        </member>
+        <member name="M:Pushenger.Api.HubDispatchers.SubscriptionHubDispatcher.#ctor(Microsoft.AspNetCore.SignalR.IHubContext{Pushenger.Api.Hubs.SubscriptionHub},Pushenger.Core.Interfaces.IUnitOfWork)">
+            <summary>
+            ctor
+            </summary>
+            <param name="_hubContext"></param>
+            <param name="_unitOfWork"></param>
+        </member>
+        <member name="M:Pushenger.Api.HubDispatchers.SubscriptionHubDispatcher.SendNotification(Pushenger.Core.Entities.Notification)">
+            <summary>
+            
+            </summary>
+            <param name="notification"></param>
+            <returns></returns>
         </member>
         <member name="T:Pushenger.Api.Hubs.BaseHub">
             <summary>

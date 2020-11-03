@@ -10,6 +10,7 @@ namespace Pushenger.Core.Interfaces
         ITopicRepository TopicRepository { get; }
         IProjectUserRepository ProjectUserRepository { get; }
         ISubscriptionRepository SubscriptionRepository { get; }
+        INotificationRepository NotificationRepository { get; }
         bool Commit();
         bool Rollback();
     }

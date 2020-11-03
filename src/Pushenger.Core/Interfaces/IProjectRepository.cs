@@ -49,5 +49,12 @@ namespace Pushenger.Core.Interfaces
         /// <param name="uniqueKey"></param>
         /// <returns></returns>
         IDataResult<Project> GetProjectWithUniqueKey(string uniqueKey);
+        /// <summary>
+        /// Projenin Unique Id ve Sender Key değerine göre kaydını getirir.
+        /// </summary>
+        /// <param name="uniqueKey"></param>
+        /// <param name="senderKey"></param>
+        /// <returns></returns>
+        IDataResult<Project> GetProjectWithUniqueKey(string uniqueKey, string senderKey);
     }
 }

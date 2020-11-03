@@ -3,7 +3,11 @@ using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Extensions.Localization;
 using Pushenger.Api.Dto.Request.Notification;
 using Pushenger.Api.Models;
+using Pushenger.Core.Entities;
+using Pushenger.Core.Interfaces;
 using Pushenger.Core.Utilities;
+using Pushenger.Core.Utilities.Result;
+using Pushenger.Service;
 using System;
 using System.Net;
 
@@ -11,7 +15,8 @@ namespace Pushenger.Api.Filters
 {
     public class IsNotificationServiceAttribute : Attribute, IActionFilter
     {
-        IStringLocalizer localizer;
+
+        IStringLocalizer localizer;        
 
         public void OnActionExecuted(ActionExecutedContext context)
         {
@@ -26,7 +31,12 @@ namespace Pushenger.Api.Filters
             if (!validator.Validate(notificationServiceModel).IsValid)
                 UnAuthorized(context);
 
-            //TODO: Proje kontrolüne devam etmek için kullanılır.
+            using (IUnitOfWork unitOfWork = new UnitOfWork())
+            {
+                IDataResult<Project> projectExists = unitOfWork.ProjectRepository.GetProjectWithUniqueKey(notificationServiceModel.UniqueKey, notificationServiceModel.SenderKey);
+                if (!projectExists.Success)
+                    UnAuthorized(context);
+            }
         }
 
         private async void UnAuthorized(ActionExecutingContext context)

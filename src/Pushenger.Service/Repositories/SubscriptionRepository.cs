@@ -36,5 +36,13 @@ namespace Pushenger.Service.Repositories
                 return new SuccessResult();
             return new ErrorResult(Constant.SubscriptionMessages.SubscriptionNotUpdated);
         }
+
+        public IDataResult<Subscription> GetSubscriptionConnectionIdAndOldConnectionId(string connectionId)
+        {
+            Subscription subscription = connection.ExecuteCommand<Subscription>("SELECT * FROM subscription WHERE ConnectionId = @connectionId OR OldConnectionId = @connectionId", connectionId)?.FirstOrDefault();
+            if (subscription != null)
+                return new SuccessDataResult<Subscription>(subscription);
+            return new ErrorDataResult<Subscription>(null, Constant.SubscriptionMessages.SubscriptionNotFound);
+        }
     }
 }

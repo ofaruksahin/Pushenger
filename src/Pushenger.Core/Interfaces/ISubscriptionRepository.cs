@@ -23,5 +23,11 @@ namespace Pushenger.Core.Interfaces
         /// <param name="subscription"></param>
         /// <returns></returns>
         IResult Update(Subscription subscription);
+        /// <summary>
+        /// İlgili connection id değerine göre ilgili kaydı getirir.
+        /// </summary>
+        /// <param name="connectionId"></param>
+        /// <returns></returns>
+        IDataResult<Subscription> GetSubscriptionConnectionIdAndOldConnectionId(string connectionId);
     }
 }

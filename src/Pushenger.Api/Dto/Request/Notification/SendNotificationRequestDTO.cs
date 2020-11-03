@@ -45,8 +45,8 @@ namespace Pushenger.Api.Dto.Request.Notification
         /// </summary>
         public SendNotificationRequestValidator()
         {
-            RuleFor(x => x.Title).NotEmpty();
-            RuleFor(x => x.Body).NotEmpty();
+            RuleFor(x => x.Title).NotEmpty().MaximumLength(255);
+            RuleFor(x => x.Body).NotEmpty().MaximumLength(255);
             RuleFor(x => x.TopicKey).Custom((val, context) =>
             {
                 if (!String.IsNullOrEmpty(val))
@@ -57,7 +57,7 @@ namespace Pushenger.Api.Dto.Request.Notification
                         context.AddFailure("Bir gruba ve kişiye aynı anda bildirim gönderemezsiniz");
                     }
                 }
-            });
+            }).MaximumLength(255);
 
             RuleFor(x => x.To).Custom((val, context) =>
             {
@@ -68,7 +68,7 @@ namespace Pushenger.Api.Dto.Request.Notification
                         context.AddFailure("Bir gruba ve kişiye aynı anda bildirim gönderemezsiniz");
                     }
                 }
-            });
+            }).MaximumLength(255);
         }
     }
 }

@@ -1,7 +1,9 @@
-﻿namespace Pushenger.Notification.Service.Core
+﻿using System.Threading.Tasks;
+
+namespace Pushenger.Notification.Service.Core
 {
     public interface INotificationService
     {
-        void InitializeService();
+        Task<SendNotificationResponse> SendNotification(SendNotificationModel sendNotificationModel);
     }
 }

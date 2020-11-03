@@ -5,7 +5,6 @@ using Pushenger.Core.Interfaces;
 using Pushenger.Core.Utilities;
 using Pushenger.Core.Utilities.Result;
 using System;
-using System.Data;
 using System.Threading.Tasks;
 
 namespace Pushenger.Api.Hubs
@@ -38,6 +37,8 @@ namespace Pushenger.Api.Hubs
 
             Project project = projectExists.Data;
 
+            Topic subscriptionTopic = null;
+
             if (String.IsNullOrEmpty(onConnectedQueries.OldConnectionId) || onConnectedQueries.OldConnectionId == "null") // Yeni bir subscription işlemi
             {
                 Subscription subscription = new Subscription()
@@ -57,6 +58,7 @@ namespace Pushenger.Api.Hubs
                     Topic topic = defaultTopicExists.Data;
 
                     subscription.TopicId = topic.Id;
+                    subscriptionTopic = topic;
                 }
                 else //Another Topic
                 {
@@ -74,6 +76,7 @@ namespace Pushenger.Api.Hubs
                     }
 
                     subscription.TopicId = topic.Id;
+                    subscriptionTopic = topic;
                 }
 
                 subscription.ConnectionId = ConnectionId;
@@ -103,12 +106,21 @@ namespace Pushenger.Api.Hubs
 
                 IResult subscriptionUpdated = unitOfWork.SubscriptionRepository.Update(subscription);
                 if (!subscriptionUpdated.Success)
-                    HttpContext.Abort();
+                {
+                    HttpContext.Abort(); return base.OnConnectedAsync();
+                }
 
-                unitOfWork.Commit();
+                IDataResult<Topic> topicExists = unitOfWork.TopicRepository.Get(subscription.TopicId);
+                if(!topicExists.Success)
+                {
+                    HttpContext.Abort(); return base.OnConnectedAsync();
+                }
+
+                subscriptionTopic = topicExists.Data;
+                unitOfWork.Commit();                  
             }
 
-
+            Groups.AddToGroupAsync(ConnectionId, subscriptionTopic.UniqueKey);
             Clients.Caller.SendAsync("subscribed", ConnectionId);
             return base.OnConnectedAsync();
         }

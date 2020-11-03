@@ -3,6 +3,6 @@
     public enum enumRedisDatabase
     {
         auth,
-        signalr
+        notification
     }
 }

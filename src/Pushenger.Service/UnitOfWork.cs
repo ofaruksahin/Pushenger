@@ -20,6 +20,7 @@ namespace Pushenger.Service
         ITopicRepository topicRepository;
         IProjectUserRepository projectUserRepository;
         ISubscriptionRepository subscriptionRepository;
+        INotificationRepository notificationRepository;
 
         public UnitOfWork()
         {
@@ -83,6 +84,14 @@ namespace Pushenger.Service
             }
         }
 
+        public INotificationRepository NotificationRepository
+        {
+            get
+            {
+                return notificationRepository ?? (notificationRepository = new NotificationRepository(transaction));
+            }
+        }
+
         public bool Commit()
         {
             bool rtn = false;
@@ -140,6 +149,7 @@ namespace Pushenger.Service
             topicRepository = null;
             projectUserRepository = null;
             subscriptionRepository = null;
+            notificationRepository = null;
         }
 
         private void dispose(bool disposing)
