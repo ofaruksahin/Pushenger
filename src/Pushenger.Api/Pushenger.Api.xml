@@ -700,6 +700,25 @@
             Bildirim sistemine abone olmak için kullanılır
             </summary>
         </member>
+        <member name="M:Pushenger.Api.Hubs.SubscriptionHub.OnConnectedAsync">
+            <summary>
+            Abone olma işlemi
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Hubs.SubscriptionHub.OnReceive(Pushenger.Api.Dto.Request.Hubs.Subscription.OnReceiveDto)">
+            <summary>
+            Bildirimi teslim alma işlemi
+            </summary>
+            <param name="dto"></param>
+            <returns></returns>
+        </member>
+        <member name="M:Pushenger.Api.Hubs.SubscriptionHub.GetOldNotification">
+            <summary>
+            Eski bildirimlerini almak için kullanılır.
+            </summary>
+            <returns></returns>
+        </member>
         <member name="T:Pushenger.Api.Models.BaseResult`1">
             <summary>
             Clientlara cevap olarak dönmesi gereken ortak model.

@@ -69,6 +69,7 @@
         public static class NotificationMessage
         {
             public static string NotificationNotInserted => "NotificationNotInserted";
+            public static string NotificaitonNotFound => "NotificationNotFound";
         }
         #endregion
     }

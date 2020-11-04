@@ -28,7 +28,7 @@ namespace Pushenger.Notification.Service
             var response =  SendNotification(new SendNotificationModel
             {
                 Title = "Pushenger Service Title",
-                Body = "Pushenger Service Body",
+                Body = new Random().Next(1,1001).ToString(),
                 TopicKey = "eeb454a1-310a-44d2-bfbe-3753d3a58b61"
             }).Result;
             if(response != null && response.StatusCode ==HttpStatusCode.OK)
